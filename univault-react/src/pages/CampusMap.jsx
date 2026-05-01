@@ -3,13 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, MapPin, ShieldCheck, Map as MapIcon, Info, ExternalLink } from 'lucide-react';
 
 const SPOTS = [
-  { name: 'LNB Central Library', icon: '📚', desc: 'Main entrance area — High CCTV coverage', safe: true },
-  { name: 'Administrative Building', icon: '🏛️', desc: 'Central hub, well-lit with active security', safe: true },
-  { name: 'Central Cafeteria', icon: '🍽️', desc: 'Busy public area, safe for meetings', safe: true },
-  { name: 'DUIET Main Entrance', icon: '🏢', desc: 'Engineering block entrance, security nearby', safe: true },
-  { name: 'Indoor Stadium', icon: '🏟️', desc: 'Open public space, usually populated', safe: true },
-  { name: 'Health Centre', icon: '🏥', desc: 'Near main gate, 24/7 staff present', safe: true },
-  { name: 'Post Office (DU)', icon: '✉️', desc: 'Quiet but central, safe daytime spot', safe: true },
+  { name: 'LNB Central Library', icon: '📚', desc: 'Main entrance area — High CCTV coverage', safe: true, img: 'https://lh3.googleusercontent.com/gps-cs-s/APNQkAHy5FsP9wN0yZV3cqiO9MUVp5ydpqPRisLgbmZiGHNXTNnqBQQEXQjSzBw7XnbNB5gHTWtYaznBoCD0KGWuUil12X2_88jg9qt87ED0Pv6RlqY964C-FsF2gGJu5UUcNY-AitcWUxdCgEY=w1920-h1080' },
+  { name: 'Administrative Building', icon: '🏛️', desc: 'Central hub, well-lit with active security', safe: true, img: 'https://lh3.googleusercontent.com/gps-cs-s/APNQkAFwiNYSqfaIOClU0DlHJdh9GIZ_4MnuxjJUm2Ul2Gt_lNGrJWF6EKVe9zSl2FlhwzyaoZ6lUTPolhLwIgNPpia3BoJNdt18xdvmQai75nrVy0kvwiXMJgy06i8fH8ip5zc4jjfw=w1920-h1080' },
+  { name: 'Central Cafeteria', icon: '🍽️', desc: 'Busy public area, safe for meetings', safe: true, img: 'https://lh3.googleusercontent.com/gps-cs-s/APNQkAHNP-1efK1Wx-ynKOhUt3Z5h5o1G29WcCOPQ9Y7fenpC2YppLzTylKaRsYqBWe4No99BBybKv6jVPNZFFj14IOO0G-NZufh88N5rayxycAxkh1JL2m6d0xdy8kYA2368AHSaTJv7Q=w1920-h1080' },
+  { name: 'DUIET Main Entrance', icon: '🏢', desc: 'Engineering block entrance, security nearby', safe: true, img: 'https://streetviewpixels-pa.googleapis.com/v1/thumbnail?cb_client=maps_sv.tactile&w=1920&h=1080&pitch=0&panoid=fG41pEobdrsgFj-oK2jOpg&yaw=52.682045' },
+  { name: 'Indoor Stadium', icon: '🏟️', desc: 'Open public space, usually populated', safe: true, img: 'https://lh3.googleusercontent.com/gps-cs-s/APNQkAGIVetGTXbQzwzMW5t-UN8uPDPME5XQSHUXA7xQSK7VBUsUmKBdqoKzv0VAajRnCPojuM9wVDC-_YEziaaLOLJuKwxUg9pWws23ry6wlrcZifDErsd2FIq6YLEj_xSkPk6U0601Gw=w1920-h1080' },
+  { name: 'Health Centre', icon: '🏥', desc: 'Near main gate, 24/7 staff present', safe: true, img: 'https://lh3.googleusercontent.com/gps-cs-s/APNQkAGRmR1OqTHjtRoT4CxrimWAO2cfibO-Rlj6akYfuHDiCutX0ijh7Xiig91LAlq_I8G0MsxPikuKy720nyIfVOfK8FFwzh2p42_y1-nUFF94r4L9BRj7uzJ4z687n6AmMBSY2F4G=w1920-h1080' },
+  { name: 'Post Office (DU)', icon: '✉️', desc: 'Quiet but central, safe daytime spot', safe: true, img: 'https://lh3.googleusercontent.com/gps-cs-s/APNQkAFwBn4dhveKQ4cnz65_zeKO2oXgEnKRmvUI4VzFZM9tHuhsk5kHyEFV3420uZNlW_kSVoQE-kpebrdtDbPTx5rpX3aA3Bgf5GCx9W3gMTpYxLBHgGshpVUdI0WU17uEHoHSreg8Xk8EEzcf=w1920-h1080' },
 ];
 
 const CampusMap = () => {
@@ -94,8 +94,8 @@ const CampusMap = () => {
                 onClick={() => setSelectedSpot(s)}
                 className={`bg-white dark:bg-slate-900 p-4 rounded-2xl flex items-center gap-4 transition-all duration-300 shadow-sm border border-slate-100 dark:border-slate-800 active:scale-95 cursor-pointer ${selectedSpot === s ? 'ring-2 ring-teal-500' : ''}`}
               >
-                <div className="w-12 h-12 bg-teal-50 dark:bg-teal-900/20 rounded-xl flex items-center justify-center text-2xl shadow-inner italic">
-                  {s.icon}
+                <div className="w-16 h-16 rounded-2xl overflow-hidden shadow-inner flex-shrink-0 border border-slate-100 dark:border-slate-800">
+                  <img src={s.img} alt={s.name} className="w-full h-full object-cover" />
                 </div>
                 <div className="flex-1">
                   <h3 className="font-syne font-bold text-sm text-[#1C3F6E] dark:text-blue-400 uppercase tracking-tight">{s.name}</h3>
