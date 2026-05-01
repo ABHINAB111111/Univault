@@ -84,7 +84,7 @@ function PhoneShell({ children }) {
 function App() {
   return (
     <SettingsProvider>
-    <Router>
+    <Router basename={import.meta.env.BASE_URL}>
       <PhoneShell>
         <Routes>
           {/* Auth & Onboarding */}
