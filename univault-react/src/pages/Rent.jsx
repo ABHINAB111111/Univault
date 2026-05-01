@@ -36,12 +36,12 @@ const categories = [
 ];
 
 const rentItems = [
-  { id:1, name:'Sony Alpha A7 III Kit', category:'Cameras', price:250, priceType:'day', badge:'available', img:'/assets/camera.png', owner:'Rohit S.', rating:4.9, reviews:28, desc:'Full-frame mirrorless kit with 28-70mm lens. Comes with 2 batteries and a camera bag. Perfect for shoots and events.', date: '2024-03-25' },
-  { id:2, name:'Epson Projector X3', category:'Electronics', price:80, priceType:'hr', badge:'available', img:'/assets/projector.png', owner:'Ananya M.', rating:4.7, reviews:15, desc:'3100 lumen brightness, HDMI + USB. Great for presentations or movie nights in the hostel.', date: '2024-03-26' },
+  { id:1, name:'Sony Alpha A7 III Kit', category:'Cameras', price:250, priceType:'day', badge:'available', img: import.meta.env.BASE_URL + 'assets/camera.png', owner:'Rohit S.', rating:4.9, reviews:28, desc:'Full-frame mirrorless kit with 28-70mm lens. Comes with 2 batteries and a camera bag. Perfect for shoots and events.', date: '2024-03-25' },
+  { id:2, name:'Epson Projector X3', category:'Electronics', price:80, priceType:'hr', badge:'available', img: import.meta.env.BASE_URL + 'assets/projector.png', owner:'Ananya M.', rating:4.7, reviews:15, desc:'3100 lumen brightness, HDMI + USB. Great for presentations or movie nights in the hostel.', date: '2024-03-26' },
   { id:3, name:'Trek Mountain Bike', category:'Sports', price:120, priceType:'day', badge:'rented', img:'https://images.unsplash.com/photo-1485965120184-e220f721d03e?w=400&q=80', owner:'Vikram P.', rating:4.8, reviews:42, desc:'21-speed mountain bike, recently serviced. Minor wear on handlebar grips. Returns on 5th April.', date: '2024-03-20' },
-  { id:4, name:'DJI Mini 3 Drone', category:'Electronics', price:400, priceType:'day', badge:'available', img:'/assets/drone.png', owner:'Leena K.', rating:5.0, reviews:19, desc:'Lightweight 249g drone with 4K video. Requires campus permission to fly. Comes with 2 extra batteries.', date: '2024-03-28' },
+  { id:4, name:'DJI Mini 3 Drone', category:'Electronics', price:400, priceType:'day', badge:'available', img: import.meta.env.BASE_URL + 'assets/drone.png', owner:'Leena K.', rating:5.0, reviews:19, desc:'Lightweight 249g drone with 4K video. Requires campus permission to fly. Comes with 2 extra batteries.', date: '2024-03-28' },
   { id:5, name:'Yamaha Acoustic Guitar', category:'Music', price:60, priceType:'day', badge:'available', img:'https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=400&q=80', owner:'Arjun D.', rating:4.6, reviews:11, desc:'Yamaha F280 with a strap and carry bag. Cleaned and freshly strung. Great for beginners.', date: '2024-03-22' },
-  { id:6, name:'Canon EOS R50 Body', category:'Cameras', price:300, priceType:'day', badge:'rented', img:'/assets/camera.png', owner:'Priya S.', rating:4.9, reviews:33, desc:'Compact mirrorless body with 24.2MP sensor. Returns on 4th April. No lens included.', date: '2024-03-27' },
+  { id:6, name:'Canon EOS R50 Body', category:'Cameras', price:300, priceType:'day', badge:'rented', img: import.meta.env.BASE_URL + 'assets/camera.png', owner:'Priya S.', rating:4.9, reviews:33, desc:'Compact mirrorless body with 24.2MP sensor. Returns on 4th April. No lens included.', date: '2024-03-27' },
 ];
 
 const badgeColors = {

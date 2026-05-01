@@ -25,7 +25,7 @@ import { FormSheet } from '../components/Sheets';
 import { useSettings } from '../contexts/SettingsContext';
 
 const products = [
-  { id:1, name:'Modern Architecture Textbook', cat:'Books', price:450, badge:'available', img:'/assets/textbook.png', seller:'Meera R.', rating:4.8, reviews:12, desc:'Comprehensive architecture reference in perfect condition. No highlights or annotations. Ideal for 4th year students.', date: '2024-03-25' },
+  { id:1, name:'Modern Architecture Textbook', cat:'Books', price:450, badge:'available', img: import.meta.env.BASE_URL + 'assets/textbook.png', seller:'Meera R.', rating:4.8, reviews:12, desc:'Comprehensive architecture reference in perfect condition. No highlights or annotations. Ideal for 4th year students.', date: '2024-03-25' },
   { id:2, name:'TI-84 Plus Calculator', cat:'Tech', price:820, badge:'available', img:'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=400&q=80', seller:'Nikhil V.', rating:4.6, reviews:8, desc:'Scientific graphing calculator, comes with fresh batteries and the original manual.', date: '2024-03-26' },
   { id:3, name:'Cannondale Mountain Bike', cat:'Transport', price:3100, badge:'sold', img:'https://images.unsplash.com/photo-1532298229144-0ec0c57515c7?w=400&q=80', seller:'Arav S.', rating:5.0, reviews:24, desc:'21-speed mountain bike, recently serviced. Minor scuffs on the frame.', date: '2024-03-20' },
   { id:4, name:'Mechanical Keyboard (TKL)', cat:'Tech', price:1200, badge:'available', img:'https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?w=400&q=80', seller:'Sana K.', rating:4.7, reviews:15, desc:'Keychron K8 with brown switches. Comes with USB-C cable. Light use, excellent condition.', date: '2024-03-28' },

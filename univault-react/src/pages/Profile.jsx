@@ -99,7 +99,7 @@ export default function Profile() {
       name: 'Arjun Mehta',
       id: '21BCE1892',
       dept: 'Computer Science',
-      avatar: '/assets/avatar.png',
+      avatar: import.meta.env.BASE_URL + 'assets/avatar.png',
       stats: {
         items: '142',
         trust: '890',
@@ -184,7 +184,7 @@ export default function Profile() {
               </div>
               <button 
                 onClick={() => {
-                  const newAvatar = user.avatar.includes('avatar.png') ? 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=400&q=80' : '/assets/avatar.png';
+                  const newAvatar = user.avatar.includes('avatar.png') ? 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=400&q=80' : import.meta.env.BASE_URL + 'assets/avatar.png';
                   setUser(prev => ({ ...prev, avatar: newAvatar }));
                   setToast('Avatar updated!');
                 }}

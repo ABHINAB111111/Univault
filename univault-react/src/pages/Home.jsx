@@ -133,7 +133,7 @@ export default function Home() {
                 className="relative w-11 h-11 rounded-2xl glass-liquid text-white hover:bg-white/20 transition-all active:scale-95 overflow-hidden"
               >
                 <img 
-                  src="/assets/avatar.png" 
+                  src={`${import.meta.env.BASE_URL}assets/avatar.png`} 
                   alt="Avatar" 
                   className="w-full h-full object-cover border border-white/20"
                 />
