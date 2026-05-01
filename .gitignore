@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+univault-react/node_modules/
+
+# Build outputs
+dist/
+univault-react/dist/
+build/
+
+# IDEs
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+lt.log
+lt_err.log
+build.log
+
+# Other
+tunnel_url.txt
+.env*

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&amp;family=DM+Sans:wght@400;500;700&amp;family=Epilogue:wght@400;700&amp;family=Manrope:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "secondary-fixed": "#9cf3df",
+            "on-tertiary-fixed": "#2d1600",
+            "primary-fixed": "#d6e3ff",
+            "primary-fixed-dim": "#a8c8ff",
+            "error": "#ba1a1a",
+            "on-primary-fixed-variant": "#254777",
+            "surface-dim": "#dbdad6",
+            "on-background": "#1b1c1a",
+            "on-tertiary-container": "#e79846",
+            "on-tertiary-fixed-variant": "#6a3b00",
+            "surface-container-highest": "#e4e2de",
+            "on-surface": "#1b1c1a",
+            "surface-container-lowest": "#ffffff",
+            "surface-tint": "#3f5f90",
+            "tertiary-fixed": "#ffdcbf",
+            "on-primary-container": "#8cabe1",
+            "on-secondary-fixed-variant": "#005045",
+            "secondary-fixed-dim": "#81d6c3",
+            "primary-container": "#1c3f6e",
+            "tertiary": "#402100",
+            "inverse-on-surface": "#f2f0ec",
+            "on-secondary": "#ffffff",
+            "background": "#fbf9f5",
+            "secondary": "#006b5c",
+            "on-secondary-fixed": "#00201b",
+            "secondary-container": "#9cf3df",
+            "surface-container-high": "#eae8e4",
+            "on-secondary-container": "#077162",
+            "inverse-primary": "#a8c8ff",
+            "outline": "#747780",
+            "tertiary-container": "#5f3400",
+            "on-primary": "#ffffff",
+            "surface-container": "#f0eeea",
+            "error-container": "#ffdad6",
+            "on-error": "#ffffff",
+            "surface": "#fbf9f5",
+            "tertiary-fixed-dim": "#ffb873",
+            "surface-variant": "#e4e2de",
+            "surface-bright": "#fbf9f5",
+            "on-tertiary": "#ffffff",
+            "inverse-surface": "#30312e",
+            "surface-container-low": "#f5f3ef",
+            "on-primary-fixed": "#001b3c",
+            "on-surface-variant": "#43474f",
+            "on-error-container": "#93000a",
+            "outline-variant": "#c3c6d0",
+            "primary": "#002954"
+          },
+          fontFamily: {
+            "headline": ["Syne", "sans-serif"],
+            "body": ["DM Sans", "sans-serif"],
+            "label": ["DM Sans", "sans-serif"]
+          },
+          borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .custom-shadow {
+      box-shadow: 0 2px 16px rgba(27,25,22,.07);
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fadeUp {
+      animation: fadeUp 400ms ease-out forwards;
+    }
+    .stagger-1 { animation-delay: 50ms; }
+    .stagger-2 { animation-delay: 100ms; }
+    .stagger-3 { animation-delay: 150ms; }
+    .stagger-4 { animation-delay: 200ms; }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body selection:bg-secondary-fixed">
+<!-- TopAppBar -->
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 h-12 bg-[#F3F1ED] dark:bg-slate-950">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#1C3F6E] dark:text-blue-400 cursor-pointer">arrow_back</span>
+<h1 class="text-xl font-bold font-[Syne] tracking-wider text-[#1C3F6E] dark:text-blue-400">UniVault</h1>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#1C3F6E] dark:text-blue-400 cursor-pointer">more_vert</span>
+</div>
+</nav>
+<main class="pt-16 pb-24 px-6 max-w-2xl mx-auto min-h-screen">
+<!-- Hero Section -->
+<header class="mb-8 animate-fadeUp">
+<h2 class="font-headline text-3xl font-extrabold tracking-tight text-primary leading-tight">Lost &amp; Found</h2>
+<p class="text-on-surface-variant mt-2 text-sm max-w-[85%]">The campus repository for misplaced treasures and shared community trust.</p>
+</header>
+<!-- Segmented Control -->
+<div class="bg-surface-container-low p-1.5 rounded-full flex gap-1 mb-8 animate-fadeUp stagger-1">
+<button class="flex-1 py-2 px-4 rounded-full text-xs font-bold font-label bg-white text-primary custom-shadow transition-all">Lost</button>
+<button class="flex-1 py-2 px-4 rounded-full text-xs font-bold font-label text-on-surface-variant hover:bg-surface-variant transition-all">Found</button>
+<button class="flex-1 py-2 px-4 rounded-full text-xs font-bold font-label text-on-surface-variant hover:bg-surface-variant transition-all">My Reports</button>
+</div>
+<!-- Category Chips -->
+<div class="flex gap-3 overflow-x-auto pb-4 -mx-6 px-6 no-scrollbar animate-fadeUp stagger-2">
+<button class="flex-none px-5 py-2 rounded-full border border-outline-variant bg-surface-container-lowest text-primary text-xs font-bold whitespace-nowrap">All Items</button>
+<button class="flex-none px-5 py-2 rounded-full border border-transparent bg-surface-container-low text-on-surface-variant text-xs font-medium whitespace-nowrap hover:bg-surface-variant">Electronics</button>
+<button class="flex-none px-5 py-2 rounded-full border border-transparent bg-surface-container-low text-on-surface-variant text-xs font-medium whitespace-nowrap hover:bg-surface-variant">Stationery</button>
+<button class="flex-none px-5 py-2 rounded-full border border-transparent bg-surface-container-low text-on-surface-variant text-xs font-medium whitespace-nowrap hover:bg-surface-variant">Clothing</button>
+<button class="flex-none px-5 py-2 rounded-full border border-transparent bg-surface-container-low text-on-surface-variant text-xs font-medium whitespace-nowrap hover:bg-surface-variant">IDs &amp; Keys</button>
+</div>
+<!-- Content Grid -->
+<section class="space-y-6 mt-4">
+<!-- Item Card 1 -->
+<article class="bg-surface-container-lowest rounded-xl p-5 custom-shadow animate-fadeUp stagger-3 relative overflow-hidden group">
+<div class="flex items-start gap-4">
+<div class="w-11 h-11 rounded-lg flex items-center justify-center bg-gradient-to-br from-primary-fixed to-secondary-fixed shrink-0">
+<span class="material-symbols-outlined text-primary text-xl">laptop_mac</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<h3 class="font-bold text-primary text-lg">MacBook Air M2</h3>
+<span class="bg-tertiary-fixed text-on-tertiary-fixed px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">₹100 REWARD</span>
+</div>
+<div class="flex items-center gap-1.5 mt-1 text-on-surface-variant text-sm">
+<span class="material-symbols-outlined text-sm">location_on</span>
+<span>Central Library - Floor 3</span>
+</div>
+<div class="mt-4 flex items-center justify-between">
+<span class="text-[11px] font-medium text-outline">Reported 2h ago</span>
+<button class="text-secondary font-bold text-sm flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                Claim <span class="material-symbols-outlined text-base">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</article>
+<!-- Item Card 2 -->
+<article class="bg-surface-container-lowest rounded-xl p-5 custom-shadow animate-fadeUp stagger-4 relative overflow-hidden group">
+<div class="flex items-start gap-4">
+<div class="w-11 h-11 rounded-lg flex items-center justify-center bg-gradient-to-br from-tertiary-fixed to-primary-fixed-dim shrink-0">
+<span class="material-symbols-outlined text-primary text-xl">key</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<h3 class="font-bold text-primary text-lg">Honda Bike Keys</h3>
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">VERIFIED</span>
+</div>
+<div class="flex items-center gap-1.5 mt-1 text-on-surface-variant text-sm">
+<span class="material-symbols-outlined text-sm">location_on</span>
+<span>Campus Cafe Entrance</span>
+</div>
+<div class="mt-4 flex items-center justify-between">
+<span class="text-[11px] font-medium text-outline">Reported 5h ago</span>
+<button class="text-secondary font-bold text-sm flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                Claim <span class="material-symbols-outlined text-base">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</article>
+<!-- Featured "Curator" Section (Asymmetric layout) -->
+<div class="grid grid-cols-2 gap-4 animate-fadeUp" style="animation-delay: 250ms;">
+<div class="col-span-1 bg-primary text-white p-6 rounded-[18px] flex flex-col justify-between aspect-square">
+<span class="material-symbols-outlined text-3xl">info</span>
+<div>
+<h4 class="font-headline text-lg leading-tight">Help the community</h4>
+<p class="text-primary-fixed text-xs mt-2 font-body">Reporting a found item increases your trust score.</p>
+</div>
+</div>
+<div class="col-span-1 flex flex-col gap-4">
+<div class="bg-[#C07828]/10 p-4 rounded-[18px] border border-[#C07828]/20 flex-1">
+<p class="text-[#C07828] text-xs font-bold mb-2">MOST ACTIVE ZONE</p>
+<div class="text-primary font-headline text-xl">Gym Khana</div>
+<p class="text-on-surface-variant text-[11px] mt-1 italic">4 items found today</p>
+</div>
+<div class="bg-surface-container p-4 rounded-[18px] flex flex-col justify-center">
+<div class="flex -space-x-2">
+<img class="w-8 h-8 rounded-full border-2 border-white" data-alt="Portrait of a smiling young student in a campus setting with soft bokeh background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4RzpRbbXYJET8VIp056-5pFCGs8VEUESej4jq83kQCwejQcx798opnXytRxLJSqZtZ0ErvAgRJ5g_2bnIYxc_iPHsT8fss-bKxYUZxsMeY_lDtqBg8ruMaCptji1W0reTmMsZ58zmupDgF6a3Hi9Nq9iajgA5RwN4mcAjkO6hbhjI7eWDnkNPMX6mdnBJCrJHKPSnsQNmfb76u-Sjbx4v5KdKMaQj5H4fJLVHYW0Fi_AToZgwfBX0q60Zt977O4NNHOXeX1Nowitw"/>
+<img class="w-8 h-8 rounded-full border-2 border-white" data-alt="Candid photo of a male student wearing glasses in a university hallway with natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzrm_5j3vv-AflCLKjyDP9b3tZlhj3XEvP2UCQ81zYNOm90hlJGTcELFFwjJxEaF9vKFaOoF6bu16ck35Ty_90cUDQbr_AM9Zfbtg8c_d5RNA2tx6XqIYt8LilIzKJYVz2qQHW0sFTpesAcULQhwVkzO3K_L_-k2Bk2tYhhYnJhze6LkGnkqSInM9QpFWUMHrK8VRWzY2wupkPzBoAeiid2jcaDbHwbHPCKtVNePxw1IcK4d6k5KI0os4ZhQsXLNZxSqVGOUlGscAt"/>
+<div class="w-8 h-8 rounded-full border-2 border-white bg-secondary flex items-center justify-center text-[10px] font-bold text-white">+12</div>
+</div>
+<p class="text-[10px] mt-2 text-on-surface-variant font-medium">Curators active now</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-safe h-[70px] bg-white/80 dark:bg-slate-900/80 backdrop-blur-md rounded-t-2xl shadow-[0_-2px_16px_rgba(27,25,22,0.07)]">
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 pb-1 hover:text-[#1A7A6A] transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="text-[11px] font-bold font-[DM Sans] uppercase tracking-tight">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#1C3F6E] dark:text-blue-300 border-b-2 border-[#C07828] pb-1 animate-[navSlide_0.35s_ease-out] hover:text-[#1A7A6A] transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="search_check">search_check</span>
+<span class="text-[11px] font-bold font-[DM Sans] uppercase tracking-tight">Lost &amp; Found</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 pb-1 hover:text-[#1A7A6A] transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="key">key</span>
+<span class="text-[11px] font-bold font-[DM Sans] uppercase tracking-tight">Rent</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 pb-1 hover:text-[#1A7A6A] transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+<span class="text-[11px] font-bold font-[DM Sans] uppercase tracking-tight">Marketplace</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 pb-1 hover:text-[#1A7A6A] transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="text-[11px] font-bold font-[DM Sans] uppercase tracking-tight">Profile</span>
+</a>
+</nav>
+<!-- FAB for Reporting -->
+<button class="fixed bottom-24 right-6 w-14 h-14 rounded-2xl bg-primary text-white custom-shadow flex items-center justify-center hover:scale-105 active:scale-95 transition-all z-40 group">
+<span class="material-symbols-outlined text-2xl group-hover:rotate-90 transition-transform duration-300">add</span>
+</button>
+</body></html>

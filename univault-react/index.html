@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UniVault | Campus Asset Management</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-dim": "#dbdad6",
+              "on-surface-variant": "#43474f",
+              "inverse-primary": "#a8c8ff",
+              "error-container": "#ffdad6",
+              "background": "#fbf9f5",
+              "surface-container": "#f0eeea",
+              "on-tertiary": "#ffffff",
+              "on-tertiary-container": "#e79846",
+              "surface-container-lowest": "#ffffff",
+              "on-secondary-fixed": "#00201b",
+              "on-primary-fixed-variant": "#254777",
+              "primary-fixed-dim": "#a8c8ff",
+              "surface-bright": "#fbf9f5",
+              "outline": "#747780",
+              "surface-container-highest": "#e4e2de",
+              "inverse-surface": "#30312e",
+              "outline-variant": "#c3c6d0",
+              "on-tertiary-fixed": "#2d1600",
+              "on-surface": "#1b1c1a",
+              "on-primary-container": "#8cabe1",
+              "on-error": "#ffffff",
+              "primary-container": "#1c3f6e",
+              "on-primary": "#ffffff",
+              "surface": "#fbf9f5",
+              "secondary": "#006b5c",
+              "tertiary-fixed": "#ffdcbf",
+              "surface-container-high": "#eae8e4",
+              "secondary-fixed-dim": "#81d6c3",
+              "secondary-container": "#9cf3df",
+              "on-secondary-container": "#077162",
+              "on-background": "#1b1c1a",
+              "tertiary-fixed-dim": "#ffb873",
+              "on-tertiary-fixed-variant": "#6a3b00",
+              "on-primary-fixed": "#001b3c",
+              "on-error-container": "#93000a",
+              "tertiary-container": "#5f3400",
+              "primary": "#002954",
+              "surface-container-low": "#f5f3ef",
+              "primary-fixed": "#d6e3ff",
+              "error": "#ba1a1a",
+              "tertiary": "#402100",
+              "secondary-fixed": "#9cf3df",
+              "surface-variant": "#e4e2de",
+              "surface-tint": "#3f5f90",
+              "inverse-on-surface": "#f2f0ec",
+              "on-secondary-fixed-variant": "#005045",
+              "on-secondary": "#ffffff"
+            },
+            fontFamily: {
+              "headline": ["Inter", "sans-serif"],
+              "body": ["Roboto", "sans-serif"],
+              "label": ["Roboto", "sans-serif"],
+              "syne": ["Inter", "sans-serif"],
+              "dm-sans": ["Roboto", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1.125rem", "3xl": "1.5rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+    <style>
+      .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; vertical-align: middle; }
+      .hide-scrollbar::-webkit-scrollbar { display: none; }
+      .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      .custom-shadow { box-shadow: 0 2px 16px rgba(27,25,22,.07); }
+      .nav-active-indicator { border-right: 4px solid #1A7A6A; }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

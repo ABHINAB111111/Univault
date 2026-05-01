@@ -1,0 +1,63 @@
+﻿
+C:\Programing codes\app\univault-react\src\components\Sheets.jsx
+  3:10  error  'useNavigate' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Programing codes\app\univault-react\src\pages\Chat.jsx
+  11:20  error  'name' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 no-unused-vars
+  52:15  error  Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+  50 |       const replies = ['Got it! ≡ƒæì', 'Sounds good ≡ƒÖî', 'Sure, see you then!', 'Perfect, thanks!'];
+  51 |       setMessages(m => [...m, { from:'them', text:replies[Math.floor(Math.random() * replies.length)], time:'Now', status:'read' }]);
+> 52 |     }, 1700 + Math.random() * 800);
+     |               ^^^^^^^^^^^^^ Cannot call impure function
+  53 |   };
+  54 |
+  55 |   useEffect(() => { endRef.current?.scrollIntoView({ behavior:'smooth' }); }, [messages, typing]);  react-hooks/purity
+
+C:\Programing codes\app\univault-react\src\pages\Home.jsx
+  143:35  error  'i' is defined but never used  no-unused-vars
+
+C:\Programing codes\app\univault-react\src\pages\LostFound.jsx
+  37:38  error  'onClaim' is defined but never used  no-unused-vars
+
+C:\Programing codes\app\univault-react\src\pages\Marketplace.jsx
+  117:40  error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  115 |   const [showList, setShowList] = useState(shouldList);
+  116 |
+> 117 |   useEffect(() => { if (initialSearch) setSearch(initialSearch); }, []);
+      |                                        ^^^^^^^^^ Avoid calling setState() directly within an effect
+  118 |   useEffect(() => { if (shouldList) setShowList(true); }, []);
+  119 |
+  120 |   const filtered = products.filter(p =>  react-hooks/set-state-in-effect
+  117:69  warning  React Hook useEffect has a missing dependency: 'initialSearch'. Either include it or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        react-hooks/exhaustive-deps
+  118:37  error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  116 |
+  117 |   useEffect(() => { if (initialSearch) setSearch(initialSearch); }, []);
+> 118 |   useEffect(() => { if (shouldList) setShowList(true); }, []);
+      |                                     ^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  119 |
+  120 |   const filtered = products.filter(p =>
+  121 |     (activeCat === 'All' || p.cat === activeCat) &&       react-hooks/set-state-in-effect
+  118:59  warning  React Hook useEffect has a missing dependency: 'shouldList'. Either include it or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           react-hooks/exhaustive-deps
+
+C:\Programing codes\app\univault-react\src\pages\ProfileMobile.jsx
+  5:9  error  'navigate' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+Γ£û 10 problems (8 errors, 2 warnings)
+
