@@ -21,7 +21,7 @@ const ConditionReport = () => {
 
   if (submitted) {
     return (
-      <div className="bg-[#F3F1ED] dark:bg-slate-950 font-dm-sans min-h-screen flex flex-col items-center justify-center p-8 text-center animate-[popIn_0.4s_ease-out]">
+      <div className="bg-[#F3F1ED] dark:bg-slate-950 font-dm-sans h-full flex flex-col items-center justify-center p-8 text-center animate-[popIn_0.4s_ease-out] overflow-hidden">
         <div className="w-24 h-24 bg-emerald-50 dark:bg-emerald-900/40 rounded-full flex items-center justify-center text-5xl mb-6 shadow-xl text-emerald-500 animate-bounce">✅</div>
         <h2 className="text-2xl font-syne font-bold text-[#1C3F6E] dark:text-blue-400 mb-2 uppercase tracking-wide">Return Confirmed!</h2>
         <p className="text-sm text-slate-500 dark:text-slate-400 mb-8 leading-relaxed">The item condition has been logged. Both you and the owner will receive a copy in the chat thread.</p>

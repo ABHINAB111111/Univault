@@ -64,7 +64,7 @@ const Chat = () => {
   };
 
   return (
-    <div className="bg-[#F3F1ED] dark:bg-slate-950 font-dm-sans antialiased min-h-screen flex flex-col h-screen overflow-hidden">
+    <div className="bg-[#F3F1ED] dark:bg-slate-950 font-dm-sans antialiased h-full flex flex-col h-full overflow-hidden">
       {/* Header */}
       <header className="bg-[#F3F1ED]/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-4 py-3 flex items-center gap-3 z-50">
         <button onClick={() => navigate(-1)} className="p-1 -ml-1 text-slate-500">

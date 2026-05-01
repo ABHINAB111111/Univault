@@ -23,7 +23,7 @@ const DisputeCenter = () => {
 
   if (submitted) {
     return (
-      <div className="bg-[#F3F1ED] dark:bg-slate-950 font-dm-sans min-h-screen flex flex-col items-center justify-center p-8 text-center animate-[popIn_0.4s_ease-out]">
+      <div className="bg-[#F3F1ED] dark:bg-slate-950 font-dm-sans h-full flex flex-col items-center justify-center p-8 text-center animate-[popIn_0.4s_ease-out] overflow-hidden">
         <div className="w-24 h-24 bg-rose-50 dark:bg-rose-900/40 rounded-full flex items-center justify-center text-4xl mb-6 shadow-xl text-rose-500 animate-pulse">📋</div>
         <h2 className="text-2xl font-syne font-bold text-[#1C3F6E] dark:text-blue-400 mb-2 uppercase tracking-wide italic">Dispute Raised!</h2>
         <p className="text-sm text-slate-500 dark:text-slate-400 mb-8 leading-relaxed">Your report has been submitted to campus admins. We will review the evidence and contact you within 48 hours via chat.</p>

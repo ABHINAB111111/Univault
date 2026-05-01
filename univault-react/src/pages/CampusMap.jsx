@@ -3,21 +3,27 @@ import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, MapPin, ShieldCheck, Map as MapIcon, Info, ExternalLink } from 'lucide-react';
 
 const SPOTS = [
-  { name: 'LNB Central Library', icon: '📚', desc: 'Main entrance area — High CCTV coverage', safe: true },
-  { name: 'Administrative Building', icon: '🏛️', desc: 'Central hub, well-lit with active security', safe: true },
-  { name: 'Central Cafeteria', icon: '🍽️', desc: 'Busy public area, safe for meetings', safe: true },
-  { name: 'DUIET Main Entrance', icon: '🏢', desc: 'Engineering block entrance, security nearby', safe: true },
-  { name: 'Indoor Stadium', icon: '🏟️', desc: 'Open public space, usually populated', safe: true },
-  { name: 'Health Centre', icon: '🏥', desc: 'Near main gate, 24/7 staff present', safe: true },
-  { name: 'Post Office (DU)', icon: '✉️', desc: 'Quiet but central, safe daytime spot', safe: true },
+  { name: 'LNB Central Library', icon: '📚', desc: 'Main entrance area — High CCTV coverage', type: 'safe', x: '25%', y: '30%' },
+  { name: 'Administrative Building', icon: '🏛️', desc: 'Central hub, well-lit with active security', type: 'secure', x: '45%', y: '50%' },
+  { name: 'Central Cafeteria', icon: '🍽️', desc: 'Busy public area, safe for meetings', type: 'public', x: '60%', y: '40%' },
+  { name: 'DUIET Main Entrance', icon: '🏢', desc: 'Engineering block entrance, security nearby', type: 'secure', x: '20%', y: '70%' },
+  { name: 'Indoor Stadium', icon: '🏟️', desc: 'Open public space, usually populated', type: 'public', x: '75%', y: '20%' },
+  { name: 'Health Centre', icon: '🏥', desc: 'Near main gate, 24/7 staff present', type: 'secure', x: '80%', y: '60%' },
+  { name: 'Post Office (DU)', icon: '✉️', desc: 'Quiet but central, safe daytime spot', type: 'public', x: '40%', y: '20%' },
 ];
+
+const TYPE_COLORS = {
+  safe: 'border-green-500 shadow-[0_0_15px_rgba(34,197,94,0.4)]',
+  public: 'border-blue-500 shadow-[0_0_15px_rgba(59,130,246,0.4)]',
+  secure: 'border-orange-500 shadow-[0_0_15px_rgba(249,115,22,0.4)]',
+};
 
 const CampusMap = () => {
   const navigate = useNavigate();
   const [selectedSpot, setSelectedSpot] = useState(null);
 
   return (
-    <div className="bg-[#F3F1ED] dark:bg-slate-950 font-dm-sans text-on-surface antialiased h-screen flex flex-col overflow-hidden">
+    <div className="bg-[#F3F1ED] dark:bg-slate-950 font-dm-sans text-on-surface antialiased h-full flex flex-col overflow-hidden">
       {/* Header */}
       <header className="fixed top-0 left-0 w-full z-50 bg-[#F3F1ED]/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
         <div className="flex justify-between items-center px-6 h-14">
@@ -36,34 +42,44 @@ const CampusMap = () => {
       {/* Main Content - Fixed Scrolling */}
       <main className="flex-1 overflow-y-auto no-scrollbar overscroll-contain pb-32 pt-14">
         <div className="px-6 py-6">
-          {/* Map Section - Real Google Map */}
-          <div className="relative bg-white dark:bg-slate-900 rounded-3xl overflow-hidden shadow-xl border border-white dark:border-slate-800 mb-6 group h-80">
-            <iframe
-              title="Dibrugarh University Campus Map"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14175.405541620005!2d94.8943!3d27.4475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x37409890f5451977%3A0x67303f8a4f910403!2sDibrugarh%20University!5e0!3m2!1sen!2sin!4v1714500000000!5m2!1sen!2sin"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen=""
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            ></iframe>
-
-            {/* Campus Label */}
-            <div className="absolute bottom-4 left-4 px-3 py-1 bg-white/90 dark:bg-slate-800/90 backdrop-blur-md rounded-lg shadow-sm border border-white/50 text-[10px] font-bold text-[#1C3F6E] uppercase tracking-widest font-syne flex items-center gap-2">
-              <MapIcon className="w-3 h-3 text-teal-600" />
-              Dibrugarh University Campus
+          {/* Map Section - Stylized with Markers */}
+          <div className="relative bg-white dark:bg-slate-900 rounded-[40px] overflow-hidden shadow-2xl border-4 border-white dark:border-slate-800 mb-8 group h-[400px] flex-shrink-0">
+            <img 
+              src={`${import.meta.env.BASE_URL}assets/campus_map_stylized.png`} 
+              className="w-full h-full object-cover opacity-90 scale-110 group-hover:scale-100 transition-transform duration-1000"
+              alt="Campus Map"
+            />
+            
+            {/* Markers Overlay */}
+            <div className="absolute inset-0 pointer-events-none">
+              {SPOTS.map((s, idx) => (
+                <div 
+                  key={idx}
+                  className={`absolute w-9 h-9 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center transition-all duration-500 pointer-events-auto cursor-pointer ${selectedSpot === s ? 'scale-150 z-50' : 'hover:scale-125 z-10'}`}
+                  style={{ top: s.y, left: s.x, animation: `float ${3 + idx}s infinite ease-in-out` }}
+                  onClick={() => setSelectedSpot(s)}
+                >
+                  <div className={`w-full h-full rounded-full glass-liquid flex items-center justify-center border-2 bg-white/40 dark:bg-slate-900/40 ${selectedSpot === s ? 'ring-4 ring-white/30' : ''} ${TYPE_COLORS[s.type]}`}>
+                    <span className="text-sm">{s.icon}</span>
+                  </div>
+                  {/* Pulse Effect for selected */}
+                  {selectedSpot === s && (
+                    <div className={`absolute inset-0 rounded-full animate-ping ${s.type === 'safe' ? 'bg-green-500/30' : s.type === 'public' ? 'bg-blue-500/30' : 'bg-orange-500/30'}`} />
+                  )}
+                </div>
+              ))}
             </div>
 
-            {/* Open in Google Maps Link */}
-            <a 
-              href="https://www.google.com/maps/place/Dibrugarh+University/" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="absolute top-4 right-4 p-2 bg-white/90 dark:bg-slate-800/90 backdrop-blur-md shadow-lg rounded-xl flex items-center justify-center text-[#1C3F6E] hover:bg-white active:scale-95 transition-all"
-            >
-              <ExternalLink className="w-4 h-4" />
-            </a>
+            {/* Map Interaction Hint */}
+            <div className="absolute top-4 left-1/2 -translate-x-1/2 px-4 py-2 bg-black/40 backdrop-blur-md rounded-full text-[9px] font-bold text-white/80 uppercase tracking-widest border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity">
+              Tap markers to explore zones
+            </div>
+
+            {/* Campus Label */}
+            <div className="absolute bottom-6 left-6 px-4 py-2 bg-white/90 dark:bg-slate-800/90 backdrop-blur-md rounded-2xl shadow-xl border border-white/50 text-[10px] font-bold text-[#1C3F6E] uppercase tracking-widest font-syne flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-teal-500 animate-pulse" />
+              Dibrugarh University Campus
+            </div>
           </div>
 
           {/* Legend */}

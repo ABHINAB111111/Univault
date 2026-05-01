@@ -41,7 +41,7 @@ const NotificationSettings = () => {
   const toggle = (id) => setToggles(prev => ({ ...prev, [id]: !prev[id] }));
 
   return (
-    <div className="bg-[#F3F1ED] dark:bg-slate-950 font-dm-sans text-on-surface antialiased min-h-screen flex flex-col">
+    <div className="bg-[#F3F1ED] dark:bg-slate-950 font-dm-sans text-on-surface antialiased h-full flex flex-col overflow-hidden">
       {/* Header */}
       <header className="fixed top-0 left-0 w-full z-50 bg-[#F3F1ED]/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
         <div className="flex justify-between items-center px-6 h-14">
