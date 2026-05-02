@@ -42,10 +42,10 @@ const categories = [
   { name: 'Furniture', icon: Armchair },
 ];
 
-const MARKETPLACE_COLOR = '#10B981'; // Consistent Emerald/Teal
+const MARKETPLACE_COLOR = '#1C3F6E'; // Consistent Navy Blue
 
 const badgeColors = {
-  available: 'bg-emerald-50 text-emerald-600',
+  available: 'bg-blue-50 text-blue-600',
   sold: 'bg-slate-100 text-slate-400',
   reserved: 'bg-amber-50 text-amber-600',
 };
@@ -80,7 +80,7 @@ function FilterSheet({ activeCat, setActiveCat, priceRange, setPriceRange, sortB
                 onClick={() => setSortBy(opt.id)}
                 className={`py-3 px-4 rounded-2xl text-xs font-bold transition-all border ${
                   sortBy === opt.id 
-                  ? 'bg-[#10B981] text-white border-[#10B981] shadow-lg shadow-emerald-900/10' 
+                  ? 'bg-[#1C3F6E] text-white border-[#1C3F6E] shadow-lg shadow-blue-900/10' 
                   : 'bg-slate-50 text-slate-500 border-transparent hover:border-slate-200'
                 }`}
               >
@@ -100,11 +100,11 @@ function FilterSheet({ activeCat, setActiveCat, priceRange, setPriceRange, sortB
               step="100"
               value={priceRange}
               onChange={(e) => setPriceRange(parseInt(e.target.value))}
-              className="w-full h-1.5 bg-slate-100 rounded-lg appearance-none cursor-pointer accent-[#10B981]"
+              className="w-full h-1.5 bg-slate-100 rounded-lg appearance-none cursor-pointer accent-[#1C3F6E]"
             />
             <div className="flex justify-between mt-3 text-[11px] font-bold text-slate-400">
               <span>₹0</span>
-              <span className="text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-lg font-black">₹{priceRange}</span>
+              <span className="text-blue-600 bg-blue-50 px-2 py-0.5 rounded-lg font-black">₹{priceRange}</span>
               <span>₹5000+</span>
             </div>
           </div>
@@ -131,7 +131,7 @@ function FilterSheet({ activeCat, setActiveCat, priceRange, setPriceRange, sortB
 
         <button 
           onClick={onClose}
-          className="w-full py-5 rounded-2xl bg-[#10B981] text-white font-syne font-bold text-sm shadow-xl shadow-emerald-600/20 active:scale-95 transition-all"
+          className="w-full py-5 rounded-2xl bg-[#1C3F6E] text-white font-syne font-bold text-sm shadow-xl shadow-blue-600/20 active:scale-95 transition-all"
         >
           View Results
         </button>
@@ -147,12 +147,12 @@ const DetailSheet = React.memo(({ item, onClose }) => {
     return (
       <div className="fixed inset-0 bg-black/60 backdrop-blur-md z-[300] flex items-center justify-center p-6 animate-fade">
         <div className="bg-white w-full max-w-sm rounded-[32px] p-8 text-center shadow-2xl animate-pop">
-          <div className="w-20 h-20 bg-emerald-50 rounded-full flex items-center justify-center mx-auto mb-6">
-            <CheckCircle2 className="text-emerald-500" size={40} />
+          <div className="w-20 h-20 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-6">
+            <CheckCircle2 className="text-blue-500" size={40} />
           </div>
           <h2 className="font-syne font-extrabold text-2xl text-[#1B1916] mb-3 leading-tight tracking-tight">Purchase Requested!</h2>
           <p className="font-dm-sans text-sm text-slate-500 leading-relaxed mb-8 px-2">
-            Your request for <span className="font-bold text-[#1B1916]">{item.name}</span> has been sent to <span className="font-bold text-[#10B981]">{item.seller}</span>. 
+            Your request for <span className="font-bold text-[#1B1916]">{item.name}</span> has been sent to <span className="font-bold text-[#1C3F6E]">{item.seller}</span>. 
           </p>
           <button 
             onClick={onClose} 
@@ -175,13 +175,13 @@ const DetailSheet = React.memo(({ item, onClose }) => {
         
         {step === 'confirm' ? (
           <div className="px-6 pt-2 pb-12 text-center">
-            <div className="w-16 h-16 bg-emerald-50 rounded-2xl flex items-center justify-center mx-auto mb-6 text-emerald-600">
+            <div className="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mx-auto mb-6 text-blue-600">
               <ShoppingBag size={32} />
             </div>
             <h2 className="font-syne font-extrabold text-2xl text-[#1B1916] mb-2">Confirm Purchase?</h2>
             <p className="text-sm font-medium text-slate-400 mb-6">{item.name}</p>
             
-            <div className="font-syne font-extrabold text-4xl text-emerald-600 mb-8 tracking-tight">₹{item.price}</div>
+            <div className="font-syne font-extrabold text-4xl text-blue-600 mb-8 tracking-tight">₹{item.price}</div>
             
             <div className="bg-slate-50 rounded-2xl p-5 mb-10 text-left">
               <p className="text-xs text-slate-500 font-medium leading-relaxed italic opacity-80">
@@ -199,7 +199,7 @@ const DetailSheet = React.memo(({ item, onClose }) => {
               </button>
               <button 
                 onClick={() => setStep('success')} 
-                className="flex-[1.5] py-4 rounded-xl bg-emerald-600 text-white font-syne font-bold text-sm shadow-xl shadow-emerald-600/20 active:scale-95 transition-all flex items-center justify-center gap-2"
+                className="flex-[1.5] py-4 rounded-xl bg-blue-600 text-white font-syne font-bold text-sm shadow-xl shadow-blue-600/20 active:scale-95 transition-all flex items-center justify-center gap-2"
               >
                 Confirm Purchase <ArrowRight size={18} />
               </button>
@@ -223,12 +223,12 @@ const DetailSheet = React.memo(({ item, onClose }) => {
                     <span className="text-xs font-bold text-[#1B1916]">{item.rating}</span>
                   </div>
                   <span className="text-slate-300">·</span>
-                  <p className="text-xs font-medium text-slate-400">Listed by <span className="text-emerald-600 font-bold">{item.seller}</span></p>
+                  <p className="text-xs font-medium text-slate-400">Listed by <span className="text-blue-600 font-bold">{item.seller}</span></p>
                 </div>
               </div>
               <div className="text-right">
                 <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Price</p>
-                <div className="font-syne font-extrabold text-2xl text-emerald-600 tracking-tight">₹{item.price}</div>
+                <div className="font-syne font-extrabold text-2xl text-blue-600 tracking-tight">₹{item.price}</div>
               </div>
             </div>
 
@@ -241,12 +241,12 @@ const DetailSheet = React.memo(({ item, onClose }) => {
                 onClick={onClose} 
                 className="flex-1 py-4 rounded-xl border border-slate-200 font-syne font-bold text-sm text-slate-600 flex items-center justify-center gap-2 hover:bg-slate-50 active:scale-95 transition-all"
               >
-                <MessageSquare size={18} className="text-emerald-600" /> Message
+                <MessageSquare size={18} className="text-blue-600" /> Message
               </button>
               <button 
                 disabled={item.badge !== 'available'}
                 onClick={() => item.badge === 'available' && setStep('confirm')}
-                className={`flex-[1.5] py-4 rounded-xl font-syne font-bold text-sm shadow-xl active:scale-95 transition-all text-white ${item.badge !== 'available' ? 'bg-slate-200 text-slate-400 shadow-none pointer-events-none' : 'bg-emerald-600 shadow-emerald-600/20'}`}
+                className={`flex-[1.5] py-4 rounded-xl font-syne font-bold text-sm shadow-xl active:scale-95 transition-all text-white ${item.badge !== 'available' ? 'bg-slate-200 text-slate-400 shadow-none pointer-events-none' : 'bg-blue-600 shadow-blue-600/20'}`}
               >
                 {item.badge === 'sold' ? 'Sold Out' : item.badge === 'reserved' ? 'Reserved' : 'Purchase Item'}
               </button>
@@ -296,17 +296,17 @@ export default function Marketplace() {
     <div className={`flex flex-col h-full font-dm-sans overflow-hidden ${settings.darkMode ? 'bg-slate-950' : 'bg-[#F9F9F9]'}`} style={{ fontFamily: 'var(--font-body)' }}>
       {/* ── Liquid Glass Header ──────────────────────────────────── */}
       <div className="relative overflow-hidden flex-shrink-0 pt-2 pb-6 px-6" style={{
-        background: `linear-gradient(165deg, #064E3B 0%, #065F46 40%, #10B981 70%, #047857 100%)`,
+        background: `linear-gradient(165deg, #0F172A 0%, #1E293B 40%, #1C3F6E 70%, #1E3A8A 100%)`,
         boxShadow: '0 12px 40px rgba(0,0,0,0.15)',
       }}>
         {/* Liquid glass ambient orbs - Optimized */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-40">
           <div className="absolute -top-10 -left-10 w-48 h-48 rounded-full" style={{
-            background: 'radial-gradient(circle, rgba(16,185,129,0.4) 0%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(28,63,110,0.4) 0%, transparent 70%)',
             filter: 'blur(30px)',
           }} />
           <div className="absolute bottom-10 -right-10 w-40 h-40 rounded-full" style={{
-            background: 'radial-gradient(circle, rgba(52,211,153,0.3) 0%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(59,130,246,0.3) 0%, transparent 70%)',
             filter: 'blur(40px)',
           }} />
         </div>
@@ -317,7 +317,7 @@ export default function Marketplace() {
           <div className="flex items-center justify-between mb-6">
             <div>
               <h1 className="font-syne font-extrabold text-[28px] text-white leading-none tracking-tight">Marketplace</h1>
-              <p className="text-emerald-100/40 text-[10px] font-bold uppercase tracking-[0.2em] mt-1.5 ml-0.5">Campus Buy & Sell</p>
+              <p className="text-blue-100/40 text-[10px] font-bold uppercase tracking-[0.2em] mt-1.5 ml-0.5">Campus Buy & Sell</p>
             </div>
             <button 
               onClick={() => setShowList(true)} 
@@ -329,7 +329,7 @@ export default function Marketplace() {
           
           <div className="flex gap-3 mb-6">
             <div className="flex-1 relative group">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-white/40 group-focus-within:text-emerald-100 transition-colors" size={18} />
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-white/40 group-focus-within:text-blue-100 transition-colors" size={18} />
               <input 
                 type="text"
                 placeholder="Search products..."
@@ -340,7 +340,7 @@ export default function Marketplace() {
             </div>
             <button 
               onClick={() => setShowFilters(true)}
-              className={`w-14 h-14 rounded-2xl flex items-center justify-center transition-all active:scale-90 shadow-xl ${showFilters || sortBy !== 'newest' || priceRange < 5000 ? 'bg-white text-emerald-700' : 'bg-white/10 text-white border border-white/10'}`}
+              className={`w-14 h-14 rounded-2xl flex items-center justify-center transition-all active:scale-90 shadow-xl ${showFilters || sortBy !== 'newest' || priceRange < 5000 ? 'bg-white text-blue-700' : 'bg-white/10 text-white border border-white/10'}`}
             >
               <Filter size={20} />
             </button>
@@ -355,7 +355,7 @@ export default function Marketplace() {
                   onClick={() => setActiveCat(c.name)} 
                   className={`flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-[10px] uppercase tracking-widest transition-all whitespace-nowrap border ${
                     activeCat===c.name 
-                    ? 'bg-white text-emerald-900 border-white shadow-xl scale-105' 
+                    ? 'bg-white text-blue-900 border-white shadow-xl scale-105' 
                     : 'bg-white/5 text-white/40 border-white/10 hover:bg-white/10'
                   }`}
                 >
@@ -372,7 +372,7 @@ export default function Marketplace() {
           <h2 className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">
             {filteredItems.length} {filteredItems.length === 1 ? 'Product' : 'Products'} Listed
           </h2>
-          <div className="flex items-center gap-1.5 text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">
+          <div className="flex items-center gap-1.5 text-[10px] font-bold text-blue-700 bg-blue-50 px-2.5 py-1 rounded-lg">
             <ArrowUpDown size={10} />
             {sortBy.replace('-', ' ')}
           </div>
@@ -394,17 +394,17 @@ export default function Marketplace() {
               <div className="p-3 flex flex-col flex-1 justify-between">
                 <div>
                   <div className="flex items-center justify-between mb-1">
-                    <span className="text-[8px] font-black uppercase tracking-widest text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded">{item.cat}</span>
+                    <span className="text-[8px] font-black uppercase tracking-widest text-blue-600 bg-blue-50 px-1.5 py-0.5 rounded">{item.cat}</span>
                     <div className="flex items-center gap-0.5">
                       <Star className="text-amber-400 fill-amber-400" size={8} />
                       <span className="text-[8px] font-black text-slate-400">{item.rating}</span>
                     </div>
                   </div>
-                  <h3 className="font-syne font-bold text-[13px] text-[#111111] leading-tight line-clamp-2 group-hover:text-emerald-600 transition-colors">{item.name}</h3>
+                  <h3 className="font-syne font-bold text-[13px] text-[#111111] leading-tight line-clamp-2 group-hover:text-blue-600 transition-colors">{item.name}</h3>
                 </div>
                 <div className="flex justify-between items-center mt-3">
                   <p className="font-syne font-extrabold text-[16px] text-[#111111]">₹{item.price}</p>
-                  <div className="w-7 h-7 bg-slate-50 rounded-lg flex items-center justify-center text-slate-300 group-hover:bg-emerald-600 group-hover:text-white transition-all">
+                  <div className="w-7 h-7 bg-slate-50 rounded-lg flex items-center justify-center text-slate-300 group-hover:bg-blue-600 group-hover:text-white transition-all">
                     <ChevronRight size={14} strokeWidth={3} />
                   </div>
                 </div>
@@ -429,7 +429,7 @@ export default function Marketplace() {
             </p>
             <button 
               onClick={() => { setActiveCat('All'); setSearchQuery(''); setPriceRange(5000); }}
-              className="mt-8 text-[10px] font-black uppercase tracking-widest text-emerald-600 bg-emerald-50 px-6 py-3 rounded-xl active:scale-95 transition-all"
+              className="mt-8 text-[10px] font-black uppercase tracking-widest text-blue-600 bg-blue-50 px-6 py-3 rounded-xl active:scale-95 transition-all"
             >
               Reset Filters
             </button>
