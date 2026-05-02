@@ -33,6 +33,8 @@ import ChatInbox from './pages/ChatInbox';
 import ConditionReport from './pages/ConditionReport';
 import AdminPanel from './pages/AdminPanel';
 import ProfileStatsDetail from './pages/ProfileStatsDetail';
+import PaymentMethods from './pages/PaymentMethods';
+import SecurityVerification from './pages/SecurityVerification';
 
 
 
@@ -120,6 +122,8 @@ function App() {
           <Route path="/inbox" element={<ChatInbox />} />
           <Route path="/chat/:id" element={<Chat />} />
           <Route path="/profile-stats" element={<ProfileStatsDetail />} />
+          <Route path="/payment-methods" element={<PaymentMethods />} />
+          <Route path="/security-id" element={<SecurityVerification />} />
 
           {/* Special Tools */}
           <Route path="/condition" element={<ConditionReport />} />

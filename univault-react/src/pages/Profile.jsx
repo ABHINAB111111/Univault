@@ -47,8 +47,8 @@ const menuGroups = [
     section: 'Account Settings',
     items: [
       { icon: SettingsIcon, label: 'App Settings', sub: 'Theme, font, privacy & more', color: 'text-slate-600', bg: 'bg-slate-100', path: '/settings' },
-      { icon: CreditCard, label: 'Payment Methods', sub: 'UPI, Card, Cash', color: 'text-violet-600', bg: 'bg-violet-50' },
-      { icon: ShieldCheck, label: 'Security & Campus ID', sub: 'Verified Senior status', color: 'text-blue-600', bg: 'bg-blue-50' },
+      { icon: CreditCard, label: 'Payment Methods', sub: 'UPI, Card, Cash', color: 'text-violet-600', bg: 'bg-violet-50', path: '/payment-methods' },
+      { icon: ShieldCheck, label: 'Security & Campus ID', sub: 'Verified Senior status', color: 'text-blue-600', bg: 'bg-blue-50', path: '/security-id' },
       { icon: LogOut, label: 'Sign Out', sub: 'Securely end session', color: 'text-rose-600', bg: 'bg-rose-50', action: 'signout' },
     ],
   },
