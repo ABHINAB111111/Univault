@@ -13,7 +13,7 @@ import {
   ChevronRight,
   ShieldAlert
 } from 'lucide-react';
-import { StatusBar, BottomNav } from '../components/Layout';
+import { BottomNav } from '../components/Layout';
 import { useSettings } from '../contexts/SettingsContext';
 
 export default function SecurityVerification() {
@@ -33,8 +33,6 @@ export default function SecurityVerification() {
 
   return (
     <div className={`flex flex-col h-screen font-dm-sans ${settings.darkMode ? 'bg-slate-950' : 'bg-[#F3F1ED]'}`}>
-      <StatusBar />
-      
       {/* Header */}
       <header className="px-6 py-4 flex items-center gap-4">
         <button onClick={() => navigate(-1)} className="p-2 -ml-2 text-slate-600 dark:text-slate-400">

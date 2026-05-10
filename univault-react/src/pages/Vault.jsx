@@ -13,7 +13,7 @@ import {
   ShoppingBag,
   Sparkles
 } from 'lucide-react';
-import { StatusBar, BottomNav, Toast } from '../components/Layout';
+import { BottomNav, Toast } from '../components/Layout';
 
 const initialListings = [
   { id: 101, title: 'Organic Chemistry II Notes', status: 'Active', price: '₹120', type: 'Sale', buyers: 3, img: 'https://images.unsplash.com/photo-1532012197267-da84d127e765?w=400&q=80' },
@@ -56,8 +56,7 @@ export default function Vault() {
     <div className="flex flex-col h-full bg-[#F3F1ED] font-dm-sans overflow-hidden">
       {toast && <Toast message={toast} onDone={() => setToast(null)} />}
       
-      <div className="bg-white pt-2 pb-1 px-6 shadow-sm border-b border-slate-100 z-40">
-        <StatusBar />
+      <div className="bg-white pt-12 pb-1 px-6 shadow-sm border-b border-slate-100 z-40">
         <div className="mt-2 flex items-center justify-between mb-4">
           <div className="flex items-center gap-4">
             <ArrowLeft className="w-5 h-5 text-[#1C3F6E] cursor-pointer active:scale-90 transition-transform" onClick={() => navigate(-1)} />

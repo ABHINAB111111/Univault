@@ -1,10 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CheckCircle2, Heart, ArrowRight, Share2, Sparkles, Trophy } from 'lucide-react';
-import { StatusBar } from '../components/Layout';
+
 
 export default function RewardSent() {
   const navigate = useNavigate();
+
+  const [confettiPositions] = useState(() => 
+    [...Array(8)].map(() => Math.random() * 100)
+  );
 
   return (
     <div className="flex flex-col h-full bg-[#EAF4EE] text-[#1A7A6A] relative overflow-y-auto no-scrollbar overscroll-contain pb-32 font-dm-sans">
@@ -14,8 +18,7 @@ export default function RewardSent() {
         <Heart className="w-32 h-32 text-amber-500 fill-current rotate-12" />
       </div>
       
-      <div className="px-6 pt-2 h-full flex flex-col items-center justify-center relative z-10 text-center">
-        <StatusBar />
+      <div className="px-6 pt-12 h-full flex flex-col items-center justify-center relative z-10 text-center">
         
         <div className="flex-1 flex flex-col items-center justify-center px-4">
           <div className="relative mb-12">
@@ -24,13 +27,13 @@ export default function RewardSent() {
               <Trophy className="w-14 h-14 text-amber-500" strokeWidth={1.5} />
               
               {/* Specialized Confetti */}
-              {[...Array(8)].map((_, i) => (
+              {confettiPositions.map((leftPos, i) => (
                 <div 
                   key={i}
                   className="absolute w-2.5 h-2.5 rounded-full animate-confettiFall"
                   style={{ 
                     background: ['#FACC15', '#4ADE80', '#60A5FA', '#F87171'][i % 4],
-                    left: `${Math.random() * 100}%`,
+                    left: `${leftPos}%`,
                     top: '-20px',
                     animationDelay: `${i * 0.12}s`
                   }}

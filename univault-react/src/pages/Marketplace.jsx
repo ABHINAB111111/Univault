@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useCallback } from 'react';
+import React, { useState, useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
 import { 
   ShoppingBag, 
@@ -20,7 +20,7 @@ import {
   Filter,
   ArrowUpDown
 } from 'lucide-react';
-import { StatusBar, BottomNav } from '../components/Layout';
+import { BottomNav } from '../components/Layout';
 import { FormSheet } from '../components/Sheets';
 import { useSettings } from '../contexts/SettingsContext';
 
@@ -174,7 +174,7 @@ const DetailSheet = React.memo(({ item, onClose }) => {
         <div className="w-12 h-1.5 bg-slate-100 rounded-full mx-auto my-4" />
         
         {step === 'confirm' ? (
-          <div className="px-6 pt-2 pb-12 text-center">
+          <div className="px-6 pt-12 pb-12 text-center">
             <div className="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mx-auto mb-6 text-blue-600">
               <ShoppingBag size={32} />
             </div>
@@ -290,29 +290,30 @@ export default function Marketplace() {
     return result;
   }, [activeCat, searchQuery, priceRange, sortBy]);
 
-  const { settings } = useSettings();
+  const { settings, getTheme } = useSettings();
+  const theme = getTheme();
 
   return (
     <div className={`flex flex-col h-full font-dm-sans overflow-hidden ${settings.darkMode ? 'bg-slate-950' : 'bg-[#F9F9F9]'}`} style={{ fontFamily: 'var(--font-body)' }}>
       {/* ── Liquid Glass Header ──────────────────────────────────── */}
-      <div className="relative overflow-hidden flex-shrink-0 pt-2 pb-6 px-6" style={{
-        background: `linear-gradient(165deg, #0F172A 0%, #1E293B 40%, #1C3F6E 70%, #1E3A8A 100%)`,
-        boxShadow: '0 12px 40px rgba(0,0,0,0.15)',
+      <div className="relative overflow-hidden flex-shrink-0 pt-16 pb-6 px-6" style={{
+        background: `linear-gradient(165deg, ${theme.headerFrom} 0%, ${theme.primaryDark} 40%, ${theme.primary} 70%, ${theme.primaryDark} 100%)`,
+        boxShadow: '0 12px 40px rgba(0,0,0,0.3)',
       }}>
-        {/* Liquid glass ambient orbs - Optimized */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-40">
-          <div className="absolute -top-10 -left-10 w-48 h-48 rounded-full" style={{
-            background: 'radial-gradient(circle, rgba(28,63,110,0.4) 0%, transparent 70%)',
-            filter: 'blur(30px)',
-          }} />
-          <div className="absolute bottom-10 -right-10 w-40 h-40 rounded-full" style={{
-            background: 'radial-gradient(circle, rgba(59,130,246,0.3) 0%, transparent 70%)',
+        {/* Liquid glass ambient orbs */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full opacity-40" style={{
+            background: 'radial-gradient(circle, rgba(120,180,255,0.4) 0%, transparent 70%)',
             filter: 'blur(40px)',
+            animation: 'liquidFloat 8s ease-in-out infinite',
+          }} />
+          <div className="absolute top-20 -left-16 w-48 h-48 rounded-full opacity-30" style={{
+            background: 'radial-gradient(circle, rgba(120,255,200,0.2) 0%, transparent 70%)',
+            filter: 'blur(50px)',
+            animation: 'liquidFloat 10s ease-in-out infinite reverse',
           }} />
         </div>
 
-        <StatusBar white />
-        
         <div className="relative z-10 mt-2">
           <div className="flex items-center justify-between mb-6">
             <div>
@@ -346,7 +347,7 @@ export default function Marketplace() {
             </button>
           </div>
 
-          <div className="flex gap-2.5 overflow-x-auto no-scrollbar pb-1">
+          <div className="flex gap-2.5 overflow-x-auto tiny-scrollbar pb-1">
             {categories.map((c) => {
               const Icon = c.icon;
               return (
@@ -379,7 +380,7 @@ export default function Marketplace() {
         </div>
 
         <div className="grid grid-cols-2 gap-4">
-          {filteredItems.map((item, i) => (
+          {filteredItems.map((item) => (
             <div 
               key={item.id} 
               onClick={() => setSelected(item)}

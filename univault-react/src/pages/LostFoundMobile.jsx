@@ -30,7 +30,7 @@ const LostFoundMobile = () => {
 <button className="flex-1 py-2 px-4 rounded-full text-xs font-bold font-label text-on-surface-variant hover:bg-surface-variant transition-all" onClick={() => navigate('/marketplace')}>My Reports</button>
 </div>
 {/* Category Chips */}
-<div className="flex gap-3 overflow-x-auto pb-4 -mx-6 px-6 no-scrollbar animate-fadeUp stagger-2">
+<div className="flex gap-3 overflow-x-auto pb-4 -mx-6 px-6 tiny-scrollbar animate-fadeUp stagger-2">
 <button className="flex-none px-5 py-2 rounded-full border border-outline-variant bg-surface-container-lowest text-primary text-xs font-bold whitespace-nowrap" onClick={() => navigate('/marketplace')}>All Items</button>
 <button className="flex-none px-5 py-2 rounded-full border border-transparent bg-surface-container-low text-on-surface-variant text-xs font-medium whitespace-nowrap hover:bg-surface-variant" onClick={() => navigate('/rent')}>Electronics</button>
 <button className="flex-none px-5 py-2 rounded-full border border-transparent bg-surface-container-low text-on-surface-variant text-xs font-medium whitespace-nowrap hover:bg-surface-variant" onClick={() => navigate('/rent')}>Stationery</button>

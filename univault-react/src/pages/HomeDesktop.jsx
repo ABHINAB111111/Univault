@@ -155,7 +155,7 @@ const HomeDesktop = () => {
 <h3 className="text-xl font-syne font-bold text-primary">Marketplace Picks</h3>
 <Link className="text-xs font-bold text-[#1A7A6A] hover:underline" to="/">View All Curator Favorites</Link>
 </div>
-<div className="flex gap-6 overflow-x-auto hide-scrollbar pb-4 -mx-2 px-2">
+<div className="flex gap-6 overflow-x-auto tiny-scrollbar pb-4 -mx-2 px-2">
 {/* Item Card 1 */}
 <div className="min-w-[280px] bg-white rounded-3xl overflow-hidden custom-shadow group">
 <div className="relative h-48 overflow-hidden">

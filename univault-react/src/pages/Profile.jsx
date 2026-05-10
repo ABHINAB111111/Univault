@@ -30,7 +30,7 @@ import {
   Flame,
   Award as BadgeIcon
 } from 'lucide-react';
-import { StatusBar, BottomNav, Toast } from '../components/Layout';
+import { BottomNav, Toast } from '../components/Layout';
 import { ConfirmDialog, FormSheet } from '../components/Sheets';
 import { useSettings } from '../contexts/SettingsContext';
 
@@ -157,22 +157,24 @@ export default function Profile() {
       {toast && <Toast message={toast} onDone={() => setToast(null)} />}
 
       <div className="flex-1 overflow-y-auto pb-32 no-scrollbar overscroll-contain">
-        {/* Header Anchor */}
-        <header className={`sticky top-0 left-0 w-full z-50 flex justify-between items-center px-6 h-12 backdrop-blur-md transition-colors ${settings.darkMode ? 'bg-slate-950/80' : 'bg-[#F3F1ED]/80'}`}>
-          <div className="flex items-center gap-4">
-            <ArrowLeft className="w-5 h-5 cursor-pointer" style={{ color: 'var(--color-primary)' }} onClick={() => navigate(-1)} />
-            <h1 className="text-xl font-bold font-syne tracking-wider" style={{ color: 'var(--color-primary)' }}>UniVault</h1>
-          </div>
-          <div className="flex items-center gap-3">
-            <button 
-              onClick={() => setShowEdit(true)}
-              className="p-2 bg-white/50 rounded-lg hover:bg-white transition-colors"
-            >
-              <Edit2 className="w-4 h-4 text-[#1C3F6E]" />
-            </button>
-            <MoreVertical className="w-5 h-5 text-[#1C3F6E] cursor-pointer" />
-          </div>
-        </header>
+        {/* StatusBar and Header */}
+        <div className={`sticky top-0 left-0 w-full z-50 transition-colors ${settings.darkMode ? 'bg-slate-950/80' : 'bg-[#F3F1ED]/80'} backdrop-blur-md`}>
+          <header className="flex justify-between items-center px-6 pt-16 pb-2">
+            <div className="flex items-center gap-4">
+              <ArrowLeft className="w-5 h-5 cursor-pointer" style={{ color: 'var(--color-primary)' }} onClick={() => navigate(-1)} />
+              <h1 className="text-xl font-bold font-syne tracking-wider" style={{ color: 'var(--color-primary)' }}>UniVault</h1>
+            </div>
+            <div className="flex items-center gap-3">
+              <button 
+                onClick={() => setShowEdit(true)}
+                className="p-2 bg-white/50 rounded-lg hover:bg-white transition-colors"
+              >
+                <Edit2 className="w-4 h-4 text-[#1C3F6E]" />
+              </button>
+              <MoreVertical className="w-5 h-5 text-[#1C3F6E] cursor-pointer" />
+            </div>
+          </header>
+        </div>
 
         {/* Navy Hero Section */}
         <section className="relative w-full pt-8 pb-16 px-6 overflow-hidden" style={{ background: `linear-gradient(135deg, ${theme.primaryDark}, ${theme.primary})` }}>

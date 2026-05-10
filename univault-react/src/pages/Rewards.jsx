@@ -11,7 +11,7 @@ import {
   Lock,
   ChevronRight
 } from 'lucide-react';
-import { StatusBar, BottomNav } from '../components/Layout';
+import { BottomNav } from '../components/Layout';
 
 const badges = [
   { id: 1, name: 'Early Adopter', desc: 'Joined in the first month of UniVault launch.', icon: Zap, color: 'text-amber-500', bg: 'bg-amber-50', earned: true },
@@ -27,9 +27,8 @@ export default function Rewards() {
 
   return (
     <div className="flex flex-col h-full bg-[#F3F1ED] font-dm-sans overflow-hidden">
-      <div className="bg-[#1C3F6E] pt-2 pb-12 px-6 shadow-sm z-40 relative overflow-hidden">
+      <div className="bg-[#1C3F6E] pt-12 pb-12 px-6 shadow-sm z-40 relative overflow-hidden">
         <div className="absolute top-[-20%] right-[-10%] w-64 h-64 bg-white/5 rounded-full blur-3xl"></div>
-        <StatusBar white />
         <div className="mt-2 flex items-center gap-4 mb-8">
           <ArrowLeft className="w-5 h-5 text-white cursor-pointer" onClick={() => navigate(-1)} />
           <h1 className="font-syne font-extrabold text-2xl text-white tracking-tight">Rewards & Trust</h1>

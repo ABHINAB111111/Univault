@@ -16,15 +16,10 @@ import {
   Gift,
   Megaphone
 } from 'lucide-react';
-import { StatusBar, BottomNav } from '../components/Layout';
+import { BottomNav } from '../components/Layout';
 import { useSettings } from '../contexts/SettingsContext';
 
-const stats = [
-  { label: 'Listed', value: 142 },
-  { label: 'Rented', value: 38 },
-  { label: 'Lost', value: 7 },
-  { label: 'Sales', value: 218 },
-];
+// stats removed to satisfy lint
 
 const quickActions = [
   { icon: Search, label: 'LOST &\nFOUND', to: '/lost-found', hasDot: true },
@@ -81,21 +76,13 @@ export default function Home() {
   const hour = new Date().getHours();
   const greeting = hour < 12 ? 'Good morning' : hour < 17 ? 'Good afternoon' : 'Good evening';
   const navigate = useNavigate();
-  const [searchVal, setSearchVal] = useState('');
-
-  const handleSearch = (e) => {
-    e.preventDefault();
-    if (searchVal.trim()) navigate(`/search?q=${encodeURIComponent(searchVal.trim())}`);
-    else navigate('/search');
-  };
-
   const { settings, getTheme } = useSettings();
   const theme = getTheme();
 
   return (
     <div className={`flex flex-col h-full font-dm-sans overflow-hidden ${settings.darkMode ? 'bg-slate-950' : 'bg-[#F4F3EF]'}`} style={{ fontFamily: 'var(--font-body)' }}>
       {/* ── Liquid Glass Header ──────────────────────────────────── */}
-      <div className="relative overflow-hidden flex-shrink-0 pt-2 pb-6 px-6" style={{
+      <div className="relative overflow-hidden flex-shrink-0 pt-16 pb-6 px-6" style={{
         background: `linear-gradient(165deg, ${theme.headerFrom} 0%, ${theme.primaryDark} 40%, ${theme.primary} 70%, ${theme.primaryDark} 100%)`,
         boxShadow: '0 12px 40px rgba(0,0,0,0.3)',
       }}>
@@ -115,8 +102,6 @@ export default function Home() {
           <div className="absolute top-0 left-0 right-0 glass-rim-light opacity-40" />
         </div>
 
-        <StatusBar white />
-        
         <div className="relative z-10 mt-2">
           <div className="flex justify-between items-start mb-6">
             <div>
@@ -230,7 +215,7 @@ export default function Home() {
           <h2 className="section-label mb-0 text-ink">AVAILABLE TO RENT</h2>
           <Link to="/rent" className="text-xs font-bold hover:underline flex items-center" style={{ color: 'var(--color-primary)' }}>See all <ChevronRight size={14}/></Link>
         </div>
-        <div className="flex gap-3 overflow-x-auto -mx-5 px-5 pb-3 mb-8 no-scrollbar">
+        <div className="flex gap-3 overflow-x-auto -mx-5 px-5 pb-3 mb-8 tiny-scrollbar">
           {marketItems.map((item) => (
             <Link to="/rent" key={item.name}
               className="bg-white rounded-2xl overflow-hidden min-w-[156px] shadow-[0_2px_12px_rgba(27,25,22,0.04)] transition-all hover:-translate-y-1 hover:shadow-lg group"
@@ -253,7 +238,7 @@ export default function Home() {
           <h2 className="section-label mb-0 text-ink">MARKETPLACE PICKS</h2>
           <Link to="/marketplace" className="text-xs font-bold hover:underline flex items-center" style={{ color: 'var(--color-primary)' }}>See all <ChevronRight size={14}/></Link>
         </div>
-        <div className="flex gap-3 overflow-x-auto -mx-5 px-5 pb-3 mb-8 no-scrollbar">
+        <div className="flex gap-3 overflow-x-auto -mx-5 px-5 pb-3 mb-8 tiny-scrollbar">
           {marketplacePicks.map((item) => (
             <Link to="/marketplace" key={item.name}
               className="bg-white rounded-2xl overflow-hidden min-w-[156px] shadow-[0_2px_12px_rgba(27,25,22,0.04)] transition-all hover:-translate-y-1 hover:shadow-lg group"

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, Gift, Heart, ShieldCheck, ChevronRight, CreditCard, Wallet } from 'lucide-react';
-import { StatusBar } from '../components/Layout';
+import { ArrowLeft, ArrowRight, Gift, Heart, ShieldCheck, ChevronRight, CreditCard, Wallet } from 'lucide-react';
+
 
 export default function SendReward() {
   const navigate = useNavigate();
@@ -15,8 +15,7 @@ export default function SendReward() {
 
   return (
     <div className="flex flex-col h-full bg-[#F3F1ED] font-dm-sans overflow-hidden">
-      <div className="bg-white px-6 pt-2 pb-6 shadow-sm border-b border-slate-100 relative z-40">
-        <StatusBar />
+      <div className="bg-white px-6 pt-12 pb-6 shadow-sm border-b border-slate-100 relative z-40">
         <div className="flex items-center justify-between mt-4">
           <button onClick={() => navigate(-1)} className="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center text-slate-600 active:scale-90 transition-all">
             <ArrowLeft size={20} />

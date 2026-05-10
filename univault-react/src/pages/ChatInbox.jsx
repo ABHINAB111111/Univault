@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, CheckCheck, Search, Filter, MessageSquare, Bell } from 'lucide-react';
 
+
 const CONTACTS = {
   riya:  { id:'riya',  name:'Riya Mehta',   ini:'RM', color:'#1A7A6A', item:'📚 DS Algorithms ₹220',    type:'sell', rating:'4.9', online: true, time: '9:16 AM', preview: '💰 Price offer: ₹180', unread: 1 },
   karan: { id:'karan', name:'Karan Mehta',  ini:'KM', color:'#1C3F6E', item:'🔧 Soldering Kit ₹40/day', type:'buy',  rating:'4.7', online: true, time: '9:03 AM', preview: 'Also — do you have a desol...', unread: 2 },
@@ -24,7 +25,7 @@ const ChatInbox = () => {
     <div className="bg-[#F3F1ED] dark:bg-slate-950 font-dm-sans text-on-surface antialiased h-full flex flex-col overflow-hidden">
       {/* Header */}
       <header className="fixed top-0 left-0 w-full z-50 bg-[#F3F1ED]/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
-        <div className="flex justify-between items-center px-6 h-14">
+        <div className="flex justify-between items-center px-6 pt-10 pb-2">
           <div className="flex items-center gap-4">
             <button onClick={() => navigate(-1)} className="p-2 -ml-2 text-slate-600 dark:text-slate-400">
               <ArrowLeft className="w-5 h-5" />
@@ -43,7 +44,7 @@ const ChatInbox = () => {
       </header>
 
       {/* Filter Tabs */}
-      <div className="pt-20 px-6 mb-4 flex gap-2 overflow-x-auto no-scrollbar">
+      <div className="pt-20 px-6 mb-4 flex gap-2 overflow-x-auto tiny-scrollbar">
         {['all', 'unread', 'sell', 'buy', 'lf'].map((f) => (
           <button
             key={f}

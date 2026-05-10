@@ -10,7 +10,7 @@ import {
   MapPin, Clock, BellRing,
   CircleDot, Square, RectangleHorizontal, Sparkles
 } from 'lucide-react';
-import { StatusBar, Toast } from '../components/Layout';
+import { Toast } from '../components/Layout';
 import { useSettings, THEMES } from '../contexts/SettingsContext';
 
 const FONTS = ['DM Sans', 'Inter', 'Roboto', 'Syne', 'Poppins', 'Outfit'];
@@ -28,7 +28,8 @@ function Toggle({ on, onChange }) {
   );
 }
 
-function SettingRow({ icon: Icon, label, sub, isToggle, toggleKey, onClick, danger, chevron = true, right }) {
+function SettingRow({ icon: SettingIcon, label, sub, isToggle, toggleKey, onClick, danger, chevron = true, right }) {
+  const Icon = SettingIcon;
   const { settings, toggleSetting } = useSettings();
   const isOn = isToggle ? settings[toggleKey] : false;
 
@@ -117,7 +118,6 @@ export default function Settings() {
 
       {/* Header */}
       <div className="bg-white dark:bg-slate-900 flex-shrink-0 border-b border-slate-100 dark:border-slate-800 shadow-sm z-40">
-        <StatusBar />
         <div className="flex items-center px-4 pt-1 pb-4">
           <button onClick={() => navigate('/profile')} className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-slate-50 dark:hover:bg-slate-800 active:scale-90 transition-all text-slate-400">
             <ChevronLeft size={24} />

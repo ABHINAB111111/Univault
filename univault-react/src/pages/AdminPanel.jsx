@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, BarChart2, ShieldAlert, Users, MessageSquare, Send, CheckCircle, AlertTriangle, Trash2, Gavel } from 'lucide-react';
 
+
 const FLAG_ITEMS = [
   { id: 1, name: 'iPhone 14 Charger', status: 'Overdue', sub: 'Rental overdue by 4 days. Owner requested return twice.', type: 'rose', icon: '🔌' },
   { id: 2, name: 'Lab Oscilloscope', status: 'Dispute', sub: 'Returned damaged. Renter claims it was pre-existing.', type: 'amber', icon: '📟' },
@@ -22,7 +23,7 @@ const AdminPanel = () => {
     <div className="bg-[#F3F1ED] dark:bg-slate-950 font-dm-sans text-on-surface antialiased h-full flex flex-col overflow-hidden">
       {/* Header */}
       <header className="fixed top-0 left-0 w-full z-50 bg-[#F3F1ED]/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
-        <div className="flex justify-between items-center px-6 h-14">
+        <div className="flex justify-between items-center px-6 pt-10 pb-2">
           <div className="flex items-center gap-4">
             <button onClick={() => navigate(-1)} className="p-2 -ml-2 text-slate-600 dark:text-slate-400">
               <ArrowLeft className="w-5 h-5" />

@@ -152,7 +152,7 @@ const Chat = () => {
 
       {/* Input Area */}
       <div className="p-4 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 pb-8">
-        <div className="flex gap-3 mb-3 overflow-x-auto no-scrollbar py-1">
+        <div className="flex gap-3 mb-3 overflow-x-auto tiny-scrollbar py-1">
           {['Meet today? 📅', '₹150 deal? 💰', 'Location? 📍', 'Thanks! 🙏'].map((chip, idx) => (
             <button 
               key={idx}

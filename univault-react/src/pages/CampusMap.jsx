@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, MapPin, ShieldCheck, Map as MapIcon, Info, ExternalLink } from 'lucide-react';
 
+
 const SPOTS = [
   { name: 'LNB Central Library', icon: '📚', desc: 'Main entrance area — High CCTV coverage', safe: true, img: 'https://lh3.googleusercontent.com/gps-cs-s/APNQkAHy5FsP9wN0yZV3cqiO9MUVp5ydpqPRisLgbmZiGHNXTNnqBQQEXQjSzBw7XnbNB5gHTWtYaznBoCD0KGWuUil12X2_88jg9qt87ED0Pv6RlqY964C-FsF2gGJu5UUcNY-AitcWUxdCgEY=w1920-h1080' },
   { name: 'Administrative Building', icon: '🏛️', desc: 'Central hub, well-lit with active security', safe: true, img: 'https://lh3.googleusercontent.com/gps-cs-s/APNQkAFwiNYSqfaIOClU0DlHJdh9GIZ_4MnuxjJUm2Ul2Gt_lNGrJWF6EKVe9zSl2FlhwzyaoZ6lUTPolhLwIgNPpia3BoJNdt18xdvmQai75nrVy0kvwiXMJgy06i8fH8ip5zc4jjfw=w1920-h1080' },
@@ -20,7 +21,7 @@ const CampusMap = () => {
     <div className="bg-[#F3F1ED] dark:bg-slate-950 font-dm-sans text-on-surface antialiased h-screen flex flex-col overflow-hidden">
       {/* Header */}
       <header className="fixed top-0 left-0 w-full z-50 bg-[#F3F1ED]/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
-        <div className="flex justify-between items-center px-6 h-14">
+        <div className="flex justify-between items-center px-6 pt-10 pb-2">
           <div className="flex items-center gap-4">
             <button onClick={() => navigate(-1)} className="p-2 -ml-2 text-slate-600 dark:text-slate-400">
               <ArrowLeft className="w-5 h-5" />
@@ -67,7 +68,7 @@ const CampusMap = () => {
           </div>
 
           {/* Legend */}
-          <div className="flex gap-4 overflow-x-auto no-scrollbar pb-6 px-1">
+          <div className="flex gap-4 overflow-x-auto tiny-scrollbar pb-6 px-1">
             <div className="flex items-center gap-2 bg-white dark:bg-slate-900 px-3 py-1.5 rounded-full shadow-sm border border-slate-100 dark:border-slate-800 whitespace-nowrap">
               <div className="w-2.5 h-2.5 rounded-full bg-[#22C55E]" />
               <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Safe Zones</span>

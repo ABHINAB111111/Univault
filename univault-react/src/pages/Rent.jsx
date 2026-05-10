@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useCallback } from 'react';
+import React, { useState, useMemo } from 'react';
 import { 
   Key, 
   Plus, 
@@ -22,7 +22,7 @@ import {
   ArrowUpDown,
   X
 } from 'lucide-react';
-import { StatusBar, BottomNav } from '../components/Layout';
+import { BottomNav } from '../components/Layout';
 import { FormSheet } from '../components/Sheets';
 import { useSettings } from '../contexts/SettingsContext';
 
@@ -44,10 +44,7 @@ const rentItems = [
   { id:6, name:'Canon EOS R50 Body', category:'Cameras', price:300, priceType:'day', badge:'rented', img: import.meta.env.BASE_URL + 'assets/camera.png', owner:'Priya S.', rating:4.9, reviews:33, desc:'Compact mirrorless body with 24.2MP sensor. Returns on 4th April. No lens included.', date: '2024-03-27' },
 ];
 
-const badgeColors = {
-  available: 'bg-emerald-50 text-emerald-600',
-  rented: 'bg-amber-50 text-amber-600',
-};
+// badgeColors unused, removed to satisfy lint
 
 function FilterSheet({ activeCat, setActiveCat, priceRange, setPriceRange, sortBy, setSortBy, onClose }) {
   return (
@@ -144,6 +141,12 @@ const DetailSheet = React.memo(({ item, onClose }) => {
   const [fromDate, setFromDate] = useState('');
   const [toDate, setToDate] = useState('');
 
+  const [dateOptions] = useState(() => [
+    { label: 'Today', from: new Date().toISOString().split('T')[0], to: new Date().toISOString().split('T')[0] },
+    { label: '3 Days', from: new Date().toISOString().split('T')[0], to: new Date(Date.now() + 3*86400000).toISOString().split('T')[0] },
+    { label: '1 Week', from: new Date().toISOString().split('T')[0], to: new Date(Date.now() + 7*86400000).toISOString().split('T')[0] },
+  ]);
+
   if (step === 'success') {
     return (
       <div className="fixed inset-0 bg-black/60 backdrop-blur-md z-[300] flex items-center justify-center p-6 animate-fade">
@@ -180,7 +183,7 @@ const DetailSheet = React.memo(({ item, onClose }) => {
         <div className="w-12 h-1.5 bg-slate-100 rounded-full mx-auto my-4" />
 
         {step === 'confirm' ? (
-          <div className="px-6 pt-2 pb-12">
+          <div className="px-6 pt-12 pb-12">
             <div className="flex items-center gap-4 mb-8">
               <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-[#1C3F6E]">
                 <CalendarDays size={24} />
@@ -189,11 +192,7 @@ const DetailSheet = React.memo(({ item, onClose }) => {
             </div>
             
             <div className="flex gap-2 mb-5">
-              {[
-                { label: 'Today', from: new Date().toISOString().split('T')[0], to: new Date().toISOString().split('T')[0] },
-                { label: '3 Days', from: new Date().toISOString().split('T')[0], to: new Date(Date.now() + 3*86400000).toISOString().split('T')[0] },
-                { label: '1 Week', from: new Date().toISOString().split('T')[0], to: new Date(Date.now() + 7*86400000).toISOString().split('T')[0] },
-              ].map(opt => (
+              {dateOptions.map(opt => (
                 <button
                   key={opt.label}
                   onClick={() => { setFromDate(opt.from); setToDate(opt.to); }}
@@ -360,7 +359,7 @@ export default function Rent() {
   return (
     <div className={`flex flex-col h-full font-dm-sans overflow-hidden ${settings.darkMode ? 'bg-slate-950' : 'bg-[#F9F9F9]'}`} style={{ fontFamily: 'var(--font-body)' }}>
       {/* ── Liquid Glass Header ──────────────────────────────────── */}
-      <div className="relative overflow-hidden flex-shrink-0 pt-2 pb-6 px-6" style={{
+      <div className="relative overflow-hidden flex-shrink-0 pt-16 pb-6 px-6" style={{
         background: `linear-gradient(165deg, ${theme.headerFrom} 0%, ${theme.primaryDark} 40%, ${theme.primary} 70%, ${theme.primaryDark} 100%)`,
         boxShadow: '0 12px 40px rgba(0,0,0,0.2)',
       }}>
@@ -376,8 +375,6 @@ export default function Rent() {
           }} />
         </div>
 
-        <StatusBar white />
-        
         <div className="relative z-10 mt-2">
           <div className="flex items-center justify-between mb-6">
             <div>
@@ -411,7 +408,7 @@ export default function Rent() {
             </button>
           </div>
 
-          <div className="flex gap-2.5 overflow-x-auto no-scrollbar pb-1">
+          <div className="flex gap-2.5 overflow-x-auto tiny-scrollbar pb-1">
             {categories.map((c) => {
               const Icon = c.icon;
               return (
@@ -444,7 +441,7 @@ export default function Rent() {
         </div>
 
         <div className="flex flex-col gap-4">
-          {filteredItems.map((item, i) => (
+          {filteredItems.map((item) => (
             <div 
               key={item.id} 
               onClick={() => setSelected(item)}

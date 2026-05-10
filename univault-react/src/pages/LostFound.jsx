@@ -23,7 +23,7 @@ import {
   HandHelping,
   Phone
 } from 'lucide-react';
-import { StatusBar, BottomNav } from '../components/Layout';
+import { BottomNav } from '../components/Layout';
 import { FormSheet } from '../components/Sheets';
 import { useSettings } from '../contexts/SettingsContext';
 
@@ -53,14 +53,7 @@ const badgeStyle = {
   found: 'bg-violet-50 text-violet-600' 
 };
 
-const reportFields = [
-  { key:'itemName', label:'Item Name', placeholder:'e.g. Blue Backpack', required:true },
-  { key:'category', label:'Category', type:'select', options:['Electronics','Books','Clothing','Keys','ID Card','Bag','Jewellery','Other'], required:true },
-  { key:'location', label:'Last Seen / Found At', placeholder:'e.g. Library, 2nd Floor', required:true },
-  { key:'description', label:'Description', type:'textarea', placeholder:'Color, brand, any identifiers…', required:true },
-  { key:'reward', label:'Reward Offered (optional)', placeholder:'e.g. ₹200', required:false },
-  { key:'contact', label:'Contact Number', placeholder:'e.g. +91 99999 99999', required:true },
-];
+// reportFields removed to satisfy lint
 
 function ItemDetail({ item, onClose }) {
   const [claimed, setClaimed] = useState(false);
@@ -195,7 +188,7 @@ export default function LostFound() {
   return (
     <div className={`flex flex-col h-full relative font-dm-sans overflow-hidden ${settings.darkMode ? 'bg-slate-950' : 'bg-[#F3F1ED]'}`} style={{ fontFamily: 'var(--font-body)' }}>
       {/* ── Liquid Glass Header ──────────────────────────────────── */}
-      <div className="relative overflow-hidden flex-shrink-0 pt-2 pb-5 px-6" style={{
+      <div className="relative overflow-hidden flex-shrink-0 pt-16 pb-5 px-6" style={{
         background: `linear-gradient(165deg, ${theme.headerFrom} 0%, ${theme.primaryDark} 40%, ${theme.primary} 70%, ${theme.primaryDark} 100%)`,
         boxShadow: '0 12px 40px rgba(0,0,0,0.3)',
       }}>
@@ -214,8 +207,6 @@ export default function LostFound() {
           <div className="absolute top-0 left-0 right-0 glass-rim-light opacity-30" />
         </div>
 
-        <StatusBar white />
-        
         <div className="relative z-10 mt-2">
           <div className="flex items-center justify-between mb-5">
             <h1 className="font-bold text-[26px] text-white leading-none tracking-tight drop-shadow-lg">
@@ -256,7 +247,7 @@ export default function LostFound() {
             ))}
           </div>
 
-          <div className="flex gap-2.5 overflow-x-auto no-scrollbar pb-1">
+          <div className="flex gap-2.5 overflow-x-auto tiny-scrollbar pb-1">
             {categories.map(c => (
               <button 
                 key={c} 

@@ -1,14 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CheckCircle2, Sparkles, ArrowRight, Share2 } from 'lucide-react';
-import { StatusBar } from '../components/Layout';
+
 
 export default function ReportConfirm() {
   const navigate = useNavigate();
 
-  useEffect(() => {
-    // Add any initialization logic if needed
-  }, []);
+  const [confettiPositions] = useState(() => 
+    [...Array(6)].map(() => Math.random() * 100)
+  );
 
   return (
     <div className="flex flex-col h-full bg-[#1C3F6E] text-white relative overflow-y-auto no-scrollbar overscroll-contain pb-32 font-dm-sans">
@@ -16,8 +16,7 @@ export default function ReportConfirm() {
       <div className="absolute top-[-100px] right-[-100px] w-80 h-80 rounded-full bg-white/5 blur-3xl animate-pulse" />
       <div className="absolute bottom-[-50px] left-[-50px] w-64 h-64 rounded-full bg-blue-400/10 blur-2xl" />
       
-      <div className="px-6 pt-2 h-full flex flex-col items-center justify-center relative z-10">
-        <StatusBar white />
+      <div className="px-6 pt-12 h-full flex flex-col items-center justify-center relative z-10">
         
         <div className="flex-1 flex flex-col items-center justify-center text-center px-4">
           <div className="relative mb-10">
@@ -26,13 +25,13 @@ export default function ReportConfirm() {
               <CheckCircle2 className="w-12 h-12 text-teal-500" strokeWidth={2.5} />
               
               {/* Confetti particles (CSS animation) */}
-              {[...Array(6)].map((_, i) => (
+              {confettiPositions.map((leftPos, i) => (
                 <div 
                   key={i}
                   className="absolute w-2 h-2 rounded-full animate-confettiFall"
                   style={{ 
                     background: ['#FACC15', '#4ADE80', '#60A5FA', '#F87171'][i % 4],
-                    left: `${Math.random() * 100}%`,
+                    left: `${leftPos}%`,
                     top: '-20px',
                     animationDelay: `${i * 0.15}s`
                   }}

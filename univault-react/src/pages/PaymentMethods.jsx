@@ -12,7 +12,7 @@ import {
   Lock,
   ChevronRight
 } from 'lucide-react';
-import { StatusBar, BottomNav, Toast } from '../components/Layout';
+import { BottomNav, Toast } from '../components/Layout';
 import { useSettings } from '../contexts/SettingsContext';
 
 const paymentMethods = [
@@ -40,8 +40,6 @@ export default function PaymentMethods() {
   return (
     <div className={`flex flex-col h-screen font-dm-sans ${settings.darkMode ? 'bg-slate-950' : 'bg-[#F3F1ED]'}`}>
       {toast && <Toast message={toast} onDone={() => setToast(null)} />}
-      <StatusBar />
-      
       {/* Header */}
       <header className="px-6 py-4 flex items-center justify-between">
         <div className="flex items-center gap-4">

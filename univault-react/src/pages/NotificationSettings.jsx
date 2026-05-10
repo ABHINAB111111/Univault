@@ -57,7 +57,7 @@ const NotificationSettings = () => {
 
       {/* Main Content */}
       <main className="flex-1 pt-20 pb-12 px-6 overflow-y-auto">
-        {NOTIF_GROUPS.map((group, gIdx) => (
+        {NOTIF_GROUPS.map((group) => (
           <div key={group.title} className="mb-8">
             <h4 className="text-[10px] font-syne font-bold text-slate-400 uppercase tracking-[0.2em] mb-4 px-2">{group.title}</h4>
             <div className="bg-white dark:bg-slate-900 rounded-3xl overflow-hidden shadow-sm border border-slate-50 dark:border-slate-800">

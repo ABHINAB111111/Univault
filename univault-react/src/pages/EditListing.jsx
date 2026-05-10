@@ -35,7 +35,7 @@ const EditListing = () => {
       {/* Main Content */}
       <main className="flex-1 pt-20 pb-28 px-6 overflow-y-auto">
         {/* Photo Section */}
-        <div className="flex gap-4 mb-8 overflow-x-auto no-scrollbar pb-2">
+        <div className="flex gap-4 mb-8 overflow-x-auto tiny-scrollbar pb-2">
           <div className="w-24 h-24 bg-blue-50 dark:bg-blue-900/40 rounded-2xl flex flex-col items-center justify-center relative shadow-inner border border-blue-100 dark:border-blue-800 flex-shrink-0">
             <span className="text-3xl italic mb-1">📚</span>
             <div className="absolute bottom-0 w-full bg-black/40 backdrop-blur-sm p-1 text-[8px] font-bold text-white text-center rounded-b-2xl uppercase tracking-widest">Edit</div>

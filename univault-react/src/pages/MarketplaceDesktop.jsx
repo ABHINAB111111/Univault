@@ -87,7 +87,7 @@ const MarketplaceDesktop = () => {
 </div>
 </section>
 {/* Category Filters */}
-<div className="flex items-center gap-4 mb-10 overflow-x-auto no-scrollbar py-2">
+<div className="flex items-center gap-4 mb-10 overflow-x-auto tiny-scrollbar py-2">
 <button className="px-6 py-2 rounded-full bg-[#1C3F6E] text-white font-syne font-bold text-sm whitespace-nowrap" onClick={() => navigate('/marketplace')}>All Items</button>
 <button className="px-6 py-2 rounded-full bg-surface-container-low text-slate-600 hover:bg-surface-container-high font-syne font-medium text-sm whitespace-nowrap transition-all" onClick={() => navigate('/marketplace')}>Textbooks</button>
 <button className="px-6 py-2 rounded-full bg-surface-container-low text-slate-600 hover:bg-surface-container-high font-syne font-medium text-sm whitespace-nowrap transition-all" onClick={() => navigate('/marketplace')}>Electronics</button>

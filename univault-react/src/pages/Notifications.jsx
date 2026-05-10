@@ -11,7 +11,7 @@ import {
   X,
   MoreVertical
 } from 'lucide-react';
-import { StatusBar, BottomNav } from '../components/Layout';
+import { BottomNav } from '../components/Layout';
 import { useSettings } from '../contexts/SettingsContext';
 
 const notifRoutes = {
@@ -46,8 +46,7 @@ export default function Notifications() {
 
   return (
     <div className={`flex flex-col h-full font-dm-sans overflow-hidden ${settings.darkMode ? 'bg-slate-950' : 'bg-[#F3F1ED]'}`} style={{ fontFamily: 'var(--font-body)' }}>
-      <div className={`pt-2 pb-5 px-6 shadow-sm border-b z-40 ${settings.darkMode ? 'bg-slate-900 border-slate-800' : 'bg-white border-slate-100'}`}>
-        <StatusBar />
+      <div className={`pt-12 pb-5 px-6 shadow-sm border-b z-40 ${settings.darkMode ? 'bg-slate-900 border-slate-800' : 'bg-white border-slate-100'}`}>
         <div className="mt-2 flex items-center justify-between">
           <div className="flex items-center gap-4">
             <ArrowLeft className="w-5 h-5 cursor-pointer" style={{ color: 'var(--color-primary)' }} onClick={() => navigate(-1)} />
