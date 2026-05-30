@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abhinab Borah — Mechanical Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500&family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#080808;
+  --white:#f5f5f5;
+  --gray:#666;
+  --dim:#1c1c1c;
+  --border:#1e1e1e;
+  --red:#e63030;
+  --green:#00e676;
+  --display:'Anton',sans-serif;
+  --body:'Inter',sans-serif;
+  --mono:'IBM Plex Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--white);font-family:var(--body);cursor:none;overflow-x:hidden}
+
+/* ══ CURSOR ══ */
+#cursor{position:fixed;width:38px;height:38px;border:1.5px solid rgba(255,255,255,.55);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .4s,height .4s,border-color .4s,background .4s,border-radius .4s}
+#cdot{position:fixed;width:5px;height:5px;background:#fff;border-radius:50%;pointer-events:none;z-index:10000;transform:translate(-50%,-50%)}
+body.ch #cursor{width:68px;height:68px;background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.25)}
+body.cg #cursor{width:56px;height:56px;border-radius:4px;border-color:var(--green);animation:cspin 1.8s linear infinite}
+body.cr #cursor{border-color:var(--red);width:56px;height:56px}
+@keyframes cspin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+#clbl{position:fixed;pointer-events:none;z-index:9997;font-family:var(--mono);font-size:.4rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.4);transform:translate(22px,22px);opacity:0;transition:opacity .3s;white-space:nowrap}
+body.ch #clbl{opacity:1}
+
+/* ══ TOP HEADER — static name + bio ══ */
+#site-header{
+  position:fixed;top:0;left:0;right:0;z-index:500;
+  height:64px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 2.5rem;
+  border-bottom:1px solid var(--border);
+  background:rgba(8,8,8,.92);
+  backdrop-filter:blur(14px);
+}
+.hdr-left{display:flex;align-items:center;gap:1.5rem}
+.hdr-name{
+  font-family:var(--display);
+  font-size:1.1rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--white);
+  position:relative;
+}
+/* Subtle name glow pulse */
+.hdr-name::after{
+  content:'';
+  position:absolute;inset:0;
+  box-shadow:0 0 20px rgba(230,48,48,.0);
+  animation:namePulse 4s ease-in-out infinite;
+  pointer-events:none;
+}
+@keyframes namePulse{
+  0%,100%{text-shadow:none}
+  50%{text-shadow:0 0 18px rgba(230,48,48,.35),0 0 40px rgba(230,48,48,.1)}
+}
+.hdr-dot{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--green);
+  animation:blink 2.5s ease-in-out infinite;
+  flex-shrink:0;
+}
+@keyframes blink{0%,100%{opacity:1;box-shadow:0 0 6px var(--green)}50%{opacity:.3;box-shadow:none}}
+.hdr-bio{
+  font-family:var(--mono);font-size:.5rem;
+  letter-spacing:.14em;text-transform:uppercase;
+  color:var(--gray);
+  border-left:1px solid var(--border);
+  padding-left:1.2rem;
+  line-height:1.6;
+}
+.hdr-bio strong{color:rgba(255,255,255,.45);font-weight:400}
+.hdr-right{display:flex;align-items:center;gap:1.5rem}
+.hdr-status{
+  font-family:var(--mono);font-size:.48rem;
+  letter-spacing:.14em;text-transform:uppercase;
+  color:var(--green);display:flex;align-items:center;gap:.5rem;
+}
+/* Menu btn */
+#nav-btn{width:40px;height:40px;border:1px solid rgba(255,255,255,.18);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:none;background:transparent;transition:border-color .3s}
+#nav-btn:hover{border-color:rgba(255,255,255,.5)}
+.nb-w{display:flex;flex-direction:column;gap:5px;align-items:center}
+.nb{width:15px;height:1px;background:#fff;transition:all .4s cubic-bezier(.77,0,.18,1)}
+#nav-btn.open .nb:nth-child(1){transform:rotate(45deg) translate(4px,4px)}
+#nav-btn.open .nb:nth-child(2){opacity:0;transform:scaleX(0)}
+#nav-btn.open .nb:nth-child(3){transform:rotate(-45deg) translate(4px,-4px)}
+
+/* ══ OVERLAY NAV ══ */
+#overlay{position:fixed;inset:0;z-index:490;background:#080808;display:flex;flex-direction:column;justify-content:center;padding:5rem 4rem;clip-path:circle(0% at calc(100% - 3rem) 2rem);transition:clip-path .8s cubic-bezier(.77,0,.18,1)}
+#overlay.open{clip-path:circle(160% at calc(100% - 3rem) 2rem)}
+.ov-links{list-style:none}
+.ov-links li{overflow:hidden}
+.ov-links a{
+  font-family:var(--display);font-size:clamp(3rem,9vw,8rem);
+  color:#fff;text-decoration:none;display:block;
+  transform:translateY(105%);
+  transition:transform .6s cubic-bezier(.77,0,.18,1),color .2s;
+  text-transform:uppercase;letter-spacing:.03em;
+}
+#overlay.open .ov-links a{transform:translateY(0)}
+.ov-links li:nth-child(1) a{transition-delay:.07s}
+.ov-links li:nth-child(2) a{transition-delay:.13s}
+.ov-links li:nth-child(3) a{transition-delay:.19s}
+.ov-links li:nth-child(4) a{transition-delay:.25s}
+.ov-links li:nth-child(5) a{transition-delay:.31s}
+.ov-links a:hover{color:var(--red)}
+.ov-gear{position:absolute;right:4rem;bottom:4rem;opacity:.05;animation:spin 22s linear infinite;pointer-events:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+.ov-foot{position:absolute;bottom:2.5rem;left:4rem;right:4rem;display:flex;justify-content:space-between;align-items:flex-end}
+.ov-info{font-family:var(--mono);font-size:.52rem;color:#3a3a3a;letter-spacing:.14em;text-transform:uppercase;line-height:2.2}
+.ov-info a{color:#3a3a3a;text-decoration:none;transition:color .3s}
+.ov-info a:hover{color:var(--green)}
+
+/* ══ SCROLL HINT ══ */
+#sh{position:fixed;right:1.8rem;top:50%;transform:translateY(-50%);z-index:10;writing-mode:vertical-rl;font-family:var(--mono);font-size:.48rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gray);display:flex;flex-direction:column;align-items:center;gap:.75rem;transition:opacity .6s;pointer-events:none}
+.sh-line{width:1px;height:48px;background:var(--dim);position:relative;overflow:hidden}
+.sh-line::after{content:'';position:absolute;top:-100%;left:0;width:100%;height:100%;background:var(--green);animation:ld 2.2s ease-in-out infinite}
+@keyframes ld{0%{top:-100%}100%{top:100%}}
+
+/* ══════════════════════════════
+   HERO
+══════════════════════════════ */
+#hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:80px 4rem 0;
+  position:relative;overflow:hidden;
+}
+#mech-canvas{position:absolute;inset:0;pointer-events:none;z-index:0;opacity:.15}
+
+/* Scan line effect */
+#hero::before{
+  content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.03) 2px,rgba(0,0,0,.03) 4px);
+  animation:scanMove 8s linear infinite;
+}
+@keyframes scanMove{from{background-position:0 0}to{background-position:0 100px}}
+
+.hero-content{position:relative;z-index:5}
+.hero-eyebrow{
+  font-family:var(--mono);font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--gray);margin-bottom:2rem;
+  display:flex;align-items:center;gap:1rem;
+  opacity:0;animation:fadeUp .7s ease forwards .4s;
+}
+.hero-eyebrow span.tag{
+  border:1px solid var(--red);color:var(--red);
+  padding:.2rem .6rem;font-size:.48rem;letter-spacing:.14em;
+}
+.hero-headline{
+  font-family:var(--display);
+  font-size:clamp(3.5rem,10.5vw,11.5rem);
+  line-height:.88;letter-spacing:.02em;text-transform:uppercase;
+}
+.hero-headline .line{display:block;overflow:hidden}
+.hero-headline .line span{
+  display:block;
+  animation:lineUp 1s cubic-bezier(.77,0,.18,1) forwards;opacity:0;
+}
+.hero-headline .line:nth-child(1) span{animation-delay:.25s}
+.hero-headline .line:nth-child(2) span{animation-delay:.42s}
+.hero-headline .line:nth-child(3) span{animation-delay:.59s}
+@keyframes lineUp{from{transform:translateY(105%);opacity:0}to{transform:translateY(0);opacity:1}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+
+/* Coloured word in headline */
+.hl-red{color:var(--red)}
+.hl-green{color:var(--green)}
+
+.hero-sub{
+  font-size:.85rem;color:var(--gray);font-weight:300;
+  max-width:360px;line-height:1.85;margin-top:2.5rem;
+  opacity:0;animation:fadeUp .8s ease forwards .95s;
+}
+.hero-sub .hi{color:var(--white);font-weight:400}
+
+/* Stats row */
+.hero-stats{
+  display:flex;gap:3rem;margin-top:3rem;
+  opacity:0;animation:fadeUp .8s ease forwards 1.2s;
+}
+.stat{border-left:2px solid var(--border);padding-left:1rem}
+.stat-n{font-family:var(--display);font-size:2rem;letter-spacing:.02em;line-height:1}
+.stat-n.r{color:var(--red)}
+.stat-n.g{color:var(--green)}
+.stat-lbl{font-family:var(--mono);font-size:.45rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gray);margin-top:.3rem}
+
+/* Portrait */
+#portrait-wrap{
+  position:absolute;right:5%;top:50%;transform:translateY(-50%);
+  z-index:3;width:clamp(200px,26vw,360px);
+}
+#portrait-wrap svg{width:100%;height:auto}
+/* Glitch effect on portrait */
+.portrait-glitch{
+  position:absolute;inset:0;
+  opacity:0;pointer-events:none;
+  animation:glitchShow 6s ease-in-out infinite;
+}
+.portrait-glitch::before,.portrait-glitch::after{
+  content:'';position:absolute;inset:0;
+  background:inherit;
+  clip-path:polygon(0 30%,100% 30%,100% 40%,0 40%);
+}
+@keyframes glitchShow{
+  0%,89%,100%{opacity:0}
+  90%{opacity:.4;transform:translateX(-4px)}
+  92%{opacity:.4;transform:translateX(4px)}
+  94%{opacity:0}
+  96%{opacity:.3;transform:translateX(-2px)}
+  98%{opacity:0}
+}
+/* Red accent line on portrait */
+.portrait-accent{
+  position:absolute;left:-1rem;top:20%;
+  width:3px;height:60%;
+  background:linear-gradient(to bottom,var(--red),transparent);
+  animation:accentPulse 3s ease-in-out infinite;
+}
+@keyframes accentPulse{0%,100%{opacity:.6;height:60%}50%{opacity:1;height:70%}}
+
+/* Hero circle hint */
+.hero-circle{
+  position:absolute;right:20%;bottom:10%;
+  width:70px;height:70px;
+  border:1px solid rgba(255,255,255,.15);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--mono);font-size:.4rem;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(255,255,255,.3);z-index:4;
+  animation:breathe 3s ease-in-out infinite;
+}
+@keyframes breathe{0%,100%{transform:scale(1);opacity:.4}50%{transform:scale(1.1);opacity:.9}}
+.hero-scroll-txt{
+  position:absolute;bottom:2.5rem;left:4rem;
+  font-family:var(--mono);font-size:.48rem;
+  color:#2a2a2a;letter-spacing:.08em;line-height:2.2;max-width:200px;z-index:4;
+}
+.hero-scroll-txt em{color:#3a3a3a;font-style:normal}
+
+/* ══ TICKER / Marquee under hero ══ */
+.mq-strip{overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:.35rem 0;position:relative}
+.mq-strip.red-strip{border-color:rgba(230,48,48,.3)}
+.mq-track{display:flex;white-space:nowrap;animation:mq 18s linear infinite}
+.mq-track.rev{animation-direction:reverse;animation-duration:15s}
+.mq-item{font-family:var(--display);font-size:clamp(1.4rem,2.5vw,2.4rem);text-transform:uppercase;letter-spacing:.05em;padding:.4rem 2rem;display:inline-flex;align-items:center;gap:1.2rem;color:#fff}
+.mq-sep{color:var(--gray);font-size:.6em}
+.mq-sep.r{color:var(--red)}
+.mq-sep.g{color:var(--green)}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ══ FEATURED SLIDES ══ */
+#featured{position:relative}
+.feat-lbl{background:#fff;color:#000;font-family:var(--mono);font-size:.52rem;letter-spacing:.22em;text-transform:uppercase;padding:.6rem 1.2rem;display:inline-block}
+.slide{position:relative;min-height:100vh;display:flex;align-items:flex-end;overflow:hidden;border-top:1px solid var(--border)}
+.slide-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) brightness(.35);transition:filter .9s,transform .9s}
+.slide:hover .slide-img{filter:grayscale(.1) brightness(.5);transform:scale(1.04)}
+.slide-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.9) 0%,rgba(0,0,0,.2) 60%,transparent 100%);z-index:1}
+/* Red accent bar on slides */
+.slide-bar{position:absolute;left:0;bottom:0;width:4px;height:0;background:var(--red);z-index:6;transition:height 1s ease}
+.slide:hover .slide-bar{height:100%}
+.slide-num{position:absolute;top:2.5rem;left:4rem;font-family:var(--mono);font-size:.55rem;color:rgba(255,255,255,.2);letter-spacing:.2em;z-index:5}
+.slide-cat{position:absolute;right:4rem;top:50%;transform:translateY(-50%);writing-mode:vertical-rl;font-family:var(--mono);font-size:.5rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.25);z-index:5}
+.view-btn{
+  position:absolute;bottom:8rem;right:4rem;
+  width:76px;height:76px;border:1px solid rgba(255,255,255,.3);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--mono);font-size:.4rem;letter-spacing:.12em;text-transform:uppercase;
+  color:#fff;text-decoration:none;cursor:none;z-index:10;
+  transition:background .3s,border-color .3s,transform .3s;
+}
+.view-btn:hover{background:rgba(230,48,48,.2);border-color:var(--red);transform:scale(1.1)}
+.slide-content{position:relative;z-index:5;padding:0 4rem 5rem;width:100%}
+.slide-title{font-family:var(--display);font-size:clamp(3.5rem,11vw,12rem);line-height:.88;text-transform:uppercase;letter-spacing:.02em}
+/* Coloured word in slide titles */
+.slide-title .accent-r{color:var(--red)}
+.slide-title .accent-g{color:var(--green)}
+.slide-bottom{display:flex;justify-content:space-between;align-items:flex-end;margin-top:1.5rem}
+.slide-desc{font-size:.78rem;color:rgba(255,255,255,.45);font-weight:300;max-width:420px;line-height:1.8}
+.slide-yr{font-family:var(--mono);font-size:.52rem;color:var(--gray)}
+
+/* ══ MECHANICAL SECTION ══ */
+#mech-section{
+  padding:7rem 4rem;border-top:1px solid var(--border);
+  position:relative;overflow:hidden;min-height:85vh;
+  display:flex;align-items:center;
+}
+.mech-bg-svg{position:absolute;inset:0;width:100%;height:100%;opacity:.07;pointer-events:none}
+.mech-content{position:relative;z-index:5;max-width:560px}
+.mech-tag{font-family:var(--mono);font-size:.52rem;letter-spacing:.28em;text-transform:uppercase;color:var(--green);margin-bottom:2rem;display:flex;align-items:center;gap:.75rem}
+.mech-tag::before{content:'';width:28px;height:1px;background:var(--green)}
+.mech-hl{font-family:var(--display);font-size:clamp(2.8rem,6.5vw,6.5rem);line-height:.9;text-transform:uppercase;letter-spacing:.02em;margin-bottom:2rem}
+.mech-hl .gr{color:var(--green)}
+.mech-body{font-size:.85rem;color:var(--gray);line-height:1.95;font-weight:300}
+/* Green accent line */
+.mech-accent{width:48px;height:2px;background:var(--green);margin-bottom:1.5rem;animation:acw 3s ease-in-out infinite}
+@keyframes acw{0%,100%{width:48px}50%{width:80px}}
+#mech-diagram{position:absolute;right:3rem;top:50%;transform:translateY(-50%);width:clamp(280px,38vw,520px);opacity:.85}
+
+/* ══ ABOUT ══ */
+#about{padding:8rem 4rem;border-top:1px solid var(--border);position:relative;overflow:hidden}
+.about-tag{font-family:var(--mono);font-size:.52rem;letter-spacing:.28em;text-transform:uppercase;color:var(--red);margin-bottom:3rem;display:flex;align-items:center;gap:.75rem}
+.about-tag::before{content:'';width:28px;height:1px;background:var(--red)}
+.about-hl{font-family:var(--display);font-size:clamp(2.8rem,7.5vw,8rem);line-height:.9;text-transform:uppercase;letter-spacing:.02em;margin-bottom:4rem}
+.about-hl .rd{color:var(--red)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.about-body{font-size:.86rem;color:var(--gray);font-weight:300;line-height:1.95}
+.about-body p+p{margin-top:1.2rem}
+.pub-card{border:1px solid var(--border);padding:2rem;transition:border-color .4s,transform .4s;position:relative;overflow:hidden}
+.pub-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:0;background:var(--red);transition:height .5s ease}
+.pub-card:hover::before{height:100%}
+.pub-card:hover{border-color:rgba(230,48,48,.4);transform:translateY(-4px)}
+.pub-card-tag{font-family:var(--mono);font-size:.48rem;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:1rem}
+.pub-card-title{font-size:.87rem;line-height:1.65;color:#fff;margin-bottom:.75rem}
+.pub-card-meta{font-family:var(--mono);font-size:.48rem;color:var(--gray);letter-spacing:.07em;line-height:1.9}
+#about-piston{position:absolute;right:-2rem;bottom:0;opacity:.04;pointer-events:none}
+
+/* ══ SKILLS ══ */
+#skills{padding:7rem 4rem;border-top:1px solid var(--border)}
+.skills-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:4rem}
+.skills-hl{font-family:var(--display);font-size:clamp(2.5rem,6.5vw,6.5rem);line-height:.9;text-transform:uppercase;letter-spacing:.02em}
+.skills-hl .gn{color:var(--green)}
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--border)}
+.sk-col{padding:2.5rem 2rem 2.5rem 0;border-right:1px solid var(--border)}
+.sk-col:last-child{border-right:none;padding-right:0}
+.sk-col:not(:first-child){padding-left:2rem}
+.sk-col-lbl{font-family:var(--mono);font-size:.48rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gray);margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid var(--border)}
+.sk-list{list-style:none}
+.sk-list li{
+  font-family:var(--display);font-size:clamp(.95rem,1.7vw,1.45rem);
+  letter-spacing:.03em;text-transform:uppercase;
+  padding:.6rem 0;border-bottom:1px solid rgba(255,255,255,.03);
+  color:rgba(255,255,255,.65);
+  transition:color .25s,padding-left .25s,border-color .25s;cursor:default;
+  display:flex;align-items:center;gap:.6rem;
+}
+.sk-list li::before{content:'▸';font-size:.5em;color:var(--border);transition:color .25s}
+.sk-col:nth-child(1) .sk-list li:hover{color:var(--green);padding-left:.4rem}
+.sk-col:nth-child(1) .sk-list li:hover::before{color:var(--green)}
+.sk-col:nth-child(2) .sk-list li:hover{color:var(--red);padding-left:.4rem}
+.sk-col:nth-child(2) .sk-list li:hover::before{color:var(--red)}
+.sk-col:nth-child(3) .sk-list li:hover{color:var(--white);padding-left:.4rem}
+.sk-col:nth-child(3) .sk-list li:hover::before{color:var(--white)}
+
+/* ══ EDUCATION ══ */
+#edu{padding:7rem 4rem;border-top:1px solid var(--border)}
+.edu-hl{font-family:var(--display);font-size:clamp(2.5rem,6.5vw,6.5rem);line-height:.9;text-transform:uppercase;letter-spacing:.02em;margin-bottom:4rem}
+.edu-list{border-top:1px solid var(--border)}
+.edu-row{
+  display:grid;grid-template-columns:4rem 1fr auto;
+  gap:2rem;align-items:start;
+  padding:2.5rem 0;border-bottom:1px solid var(--border);
+  transition:padding-left .3s,border-color .3s;cursor:default;
+  position:relative;
+}
+.edu-row::after{content:'';position:absolute;bottom:-1px;left:0;width:0;height:1px;background:var(--green);transition:width .5s ease}
+.edu-row:hover::after{width:100%}
+.edu-row:hover{padding-left:.75rem}
+.edu-n{font-family:var(--mono);font-size:.5rem;color:var(--gray);letter-spacing:.1em;padding-top:.2rem}
+.edu-type{font-family:var(--mono);font-size:.48rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gray);margin-bottom:.5rem}
+.edu-name{font-family:var(--display);font-size:clamp(1.1rem,2.5vw,2.2rem);letter-spacing:.02em;text-transform:uppercase;line-height:1;margin-bottom:.4rem}
+.edu-org{font-size:.76rem;color:var(--gray);font-weight:300;line-height:1.6}
+.edu-yr{font-family:var(--mono);font-size:.5rem;color:var(--gray);white-space:nowrap;padding-top:.2rem;text-align:right}
+/* cert badge */
+.cert-badge{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--mono);font-size:.42rem;letter-spacing:.12em;text-transform:uppercase;border:1px solid rgba(0,230,118,.3);color:var(--green);padding:.2rem .5rem;margin-top:.5rem}
+
+/* ══ CONTACT ══ */
+#contact{
+  padding:8rem 4rem 6rem;border-top:1px solid var(--border);
+  min-height:80vh;display:flex;flex-direction:column;justify-content:center;
+  position:relative;overflow:hidden;
+}
+#cg-gear{position:absolute;right:-10rem;top:50%;transform:translateY(-50%);opacity:.04;animation:spin 35s linear infinite;pointer-events:none}
+/* Red glow behind headline */
+.contact-glow{position:absolute;top:30%;left:-5%;width:50%;height:40%;background:radial-gradient(ellipse,rgba(230,48,48,.04) 0%,transparent 70%);pointer-events:none;animation:glowPulse 5s ease-in-out infinite}
+@keyframes glowPulse{0%,100%{opacity:.6}50%{opacity:1}}
+.contact-hl{font-family:var(--display);font-size:clamp(3.5rem,11vw,12rem);line-height:.88;text-transform:uppercase;letter-spacing:.02em;margin-bottom:5rem;position:relative;z-index:2}
+.contact-hl .rd{color:var(--red)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:end;position:relative;z-index:2}
+.contact-info{font-family:var(--mono);font-size:.56rem;color:var(--gray);letter-spacing:.1em;text-transform:uppercase;line-height:2.5}
+.contact-info a{color:var(--gray);text-decoration:none;transition:color .3s}
+.contact-info a:hover{color:var(--green)}
+.contact-btns{display:flex;flex-direction:column;gap:.75rem;align-items:flex-end}
+.c-btn{
+  font-family:var(--mono);font-size:.54rem;letter-spacing:.18em;text-transform:uppercase;
+  color:#fff;text-decoration:none;border:1px solid var(--dim);
+  padding:.9rem 2.2rem;display:inline-block;
+  transition:border-color .3s,background .3s,color .3s;
+  position:relative;overflow:hidden;
+}
+.c-btn::before{content:'';position:absolute;inset:0;background:var(--red);transform:translateX(-101%);transition:transform .35s ease}
+.c-btn:hover::before{transform:translateX(0)}
+.c-btn:hover{border-color:var(--red);color:#fff}
+.c-btn span{position:relative;z-index:1}
+.c-btn.g-btn::before{background:var(--green)}
+.c-btn.g-btn:hover{border-color:var(--green);color:#000}
+
+/* ══ FOOTER ══ */
+footer{padding:1.5rem 4rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.ft{font-family:var(--mono);font-size:.48rem;color:var(--gray);letter-spacing:.12em;text-transform:uppercase}
+footer a{color:var(--gray);text-decoration:none;transition:color .3s}
+footer a:hover{color:var(--red)}
+.ft-green{color:var(--green)}
+
+/* ══ REVEAL ══ */
+.r{opacity:0;transform:translateY(26px);transition:opacity .9s ease,transform .9s ease}
+.r.in{opacity:1;transform:translateY(0)}
+.r-left{opacity:0;transform:translateX(-30px);transition:opacity .9s ease,transform .9s ease}
+.r-left.in{opacity:1;transform:translateX(0)}
+.r-right{opacity:0;transform:translateX(30px);transition:opacity .9s ease,transform .9s ease}
+.r-right.in{opacity:1;transform:translateX(0)}
+.r-scale{opacity:0;transform:scale(.95);transition:opacity .9s ease,transform .9s ease}
+.r-scale.in{opacity:1;transform:scale(1)}
+
+/* ══ RESPONSIVE ══ */
+@media(max-width:800px){
+  #site-header{padding:0 1.2rem}
+  .hdr-bio{display:none}
+  #hero,#about,#skills,#edu,#contact,#mech-section{padding-left:1.5rem;padding-right:1.5rem}
+  .slide-content{padding:0 1.5rem 5rem}
+  .slide-cat,.view-btn{display:none}
+  #portrait-wrap{display:none}
+  .about-grid,.skills-grid,.contact-grid{grid-template-columns:1fr}
+  .skills-grid .sk-col{border-right:none;border-bottom:1px solid var(--border);padding:2rem 0}
+  .edu-row{grid-template-columns:2.5rem 1fr}
+  .edu-yr{display:none}
+  footer{flex-direction:column;gap:.75rem;padding:1.5rem;text-align:center}
+  #mech-diagram{display:none}
+  .hero-stats{gap:1.5rem}
+}
+</style>
+</head>
+<body>
+
+<div id="cursor"></div>
+<div id="cdot"></div>
+<div id="clbl"></div>
+
+<!-- ══ STATIC HEADER ══ -->
+<header id="site-header">
+  <div class="hdr-left">
+    <div class="hdr-dot"></div>
+    <div class="hdr-name">Abhinab Borah</div>
+    <div class="hdr-bio">
+      <strong>B.Tech · Mechanical Engineering</strong><br>
+      DUIET · Dibrugarh University · Published Researcher
+    </div>
+  </div>
+  <div class="hdr-right">
+    <div class="hdr-status">
+      <div class="hdr-dot" style="width:6px;height:6px"></div>
+      Available for opportunities
+    </div>
+    <button id="nav-btn" onclick="toggleNav()">
+      <div class="nb-w"><div class="nb"></div><div class="nb"></div><div class="nb"></div></div>
+    </button>
+  </div>
+</header>
+
+<!-- ══ OVERLAY NAV ══ -->
+<nav id="overlay">
+  <svg class="ov-gear" width="350" height="350" viewBox="0 0 100 100">
+    <path fill="white" d="M43,0h14l2,10a36,36,0,0,1,8,3.3l9-5,10,10-5,9A36,36,0,0,1,84,36l10,2v14l-10,2a36,36,0,0,1-3.3,8l5,9-10,10-9-5A36,36,0,0,1,58,79l-2,10H43l-2-10a36,36,0,0,1-8-3.3l-9,5-10-10,5-9A36,36,0,0,1,16,52L6,50V36l10-2a36,36,0,0,1,3.3-8l-5-9,10-10,9,5A36,36,0,0,1,41,9ZM50,32a18,18,0,1,0,18,18A18,18,0,0,0,50,32Z"/>
+  </svg>
+  <ul class="ov-links">
+    <li><a href="#about"    onclick="closeNav()">About</a></li>
+    <li><a href="#featured" onclick="closeNav()">Work</a></li>
+    <li><a href="#skills"   onclick="closeNav()">Skills</a></li>
+    <li><a href="#edu"      onclick="closeNav()">Education</a></li>
+    <li><a href="#contact"  onclick="closeNav()">Contact</a></li>
+  </ul>
+  <div class="ov-foot">
+    <div class="ov-info">Dibrugarh, Assam, India<br><a href="https://www.linkedin.com/in/abhinab-borah-017bb937a/" target="_blank">LinkedIn ↗</a></div>
+    <div class="ov-info" style="text-align:right">Mechanical Engineering<br>DUIET · Dibrugarh University</div>
+  </div>
+</nav>
+
+<!-- ══ SCROLL HINT ══ -->
+<div id="sh"><span>Scroll</span><div class="sh-line"></div></div>
+
+<!-- ══════════════════════════════════
+     HERO
+══════════════════════════════════ -->
+<section id="hero">
+  <canvas id="mech-canvas"></canvas>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      Mechanical Engineering Student
+      <span class="tag">DUIET · 2024</span>
+      <span class="tag" style="border-color:var(--green);color:var(--green)">Published Researcher</span>
+    </div>
+    <h1 class="hero-headline">
+      <span class="line"><span>DRIVEN BY</span></span>
+      <span class="line"><span><span class="hl-red">PRECI</span><span class="hl-green">SION</span></span></span>
+      <span class="line"><span>&amp; GRIT.</span></span>
+    </h1>
+    <p class="hero-sub">
+      Building tomorrow's machines with <span class="hi">CAD precision</span>, engineering fundamentals, and a <span class="hi">published research</span> perspective on sustainable materials.
+    </p>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-n r">01</div>
+        <div class="stat-lbl">Peer-Reviewed Paper</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n g">02</div>
+        <div class="stat-lbl">Certifications</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n">∞</div>
+        <div class="stat-lbl">Curiosity</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Portrait line art -->
+  <div id="portrait-wrap">
+    <div class="portrait-glitch"></div>
+    <div class="portrait-accent"></div>
+    <svg viewBox="0 0 320 430" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="white">
+      <defs>
+        <filter id="glow"><feGaussianBlur stdDeviation="2" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      </defs>
+      <!-- Tech circles decoration -->
+      <circle cx="160" cy="190" r="148" stroke="white" stroke-width=".8" fill="none" opacity=".08"/>
+      <circle cx="160" cy="190" r="140" stroke="white" stroke-width=".4" fill="none" opacity=".05"/>
+      <!-- Crosshair targeting lines -->
+      <line x1="12" y1="190" x2="55" y2="190" stroke="white" stroke-width=".5" opacity=".2"/>
+      <line x1="265" y1="190" x2="308" y2="190" stroke="white" stroke-width=".5" opacity=".2"/>
+      <line x1="160" y1="42" x2="160" y2="72" stroke="white" stroke-width=".5" opacity=".2"/>
+      <!-- Targeting brackets top left -->
+      <path d="M25,55 L25,35 L45,35" stroke="white" stroke-width=".8" opacity=".3" fill="none"/>
+      <!-- Targeting brackets top right -->
+      <path d="M295,55 L295,35 L275,35" stroke="white" stroke-width=".8" opacity=".3" fill="none"/>
+      <!-- Targeting brackets bottom left -->
+      <path d="M25,355 L25,375 L45,375" stroke="white" stroke-width=".8" opacity=".3" fill="none"/>
+      <!-- Targeting brackets bottom right -->
+      <path d="M295,355 L295,375 L275,375" stroke="white" stroke-width=".8" opacity=".3" fill="none"/>
+      <!-- Body -->
+      <path d="M75 430 C80 355 92 312 115 292 C128 282 144 276 160 275 C176 276 192 282 205 292 C228 312 240 355 245 430" stroke-width="1.5" opacity=".9"/>
+      <!-- Arms crossed left over right -->
+      <path d="M78 390 C90 360 105 338 125 325 L155 315 L165 315 L195 325 C215 338 230 360 242 390" stroke-width="1.2" opacity=".75"/>
+      <!-- Left arm visible crossing right -->
+      <path d="M108 360 C120 350 138 345 158 343 C178 341 200 344 218 352" stroke-width="1.1" opacity=".65"/>
+      <!-- Right arm visible crossing left -->
+      <path d="M212 360 C200 350 182 345 162 343 C142 341 120 344 102 352" stroke-width="1.1" opacity=".65"/>
+      <!-- Jacket lines -->
+      <path d="M85 415 C95 390 108 368 122 350" stroke-width=".7" opacity=".35"/>
+      <path d="M235 415 C225 390 212 368 198 350" stroke-width=".7" opacity=".35"/>
+      <!-- Collar -->
+      <path d="M145 290 C148 298 155 305 160 306 C165 305 172 298 175 290" stroke-width="1.3" opacity=".8"/>
+      <!-- Jacket zipper hint -->
+      <line x1="160" y1="306" x2="160" y2="360" stroke-width=".7" opacity=".3"/>
+      <!-- Jacket chest line -->
+      <path d="M120 335 L145 320 L160 322 L175 320 L200 335" stroke-width=".8" opacity=".4"/>
+      <!-- Neck -->
+      <path d="M146 268 L146 290 M174 268 L174 290" stroke-width="1.2" opacity=".75"/>
+      <!-- Head -->
+      <path d="M118 202 C116 168 124 138 160 128 C196 138 204 168 202 202 C202 234 187 262 172 270 C167 273 153 273 148 270 C133 262 118 234 118 202 Z" stroke-width="1.6" opacity="1"/>
+      <!-- Hair top -->
+      <path d="M120 198 C118 172 122 148 135 136 C145 128 155 125 160 124 C165 125 175 128 185 136 C198 148 202 172 200 198" stroke-width="1.6" opacity="1"/>
+      <!-- Hair sides -->
+      <path d="M120 195 C118 182 116 168 118 155" stroke-width="1.2" opacity=".6"/>
+      <path d="M200 195 C202 182 204 168 202 155" stroke-width="1.2" opacity=".6"/>
+      <!-- Ear left -->
+      <path d="M118 202 C110 200 107 208 110 216 C113 222 118 222 120 218" stroke-width="1.2" opacity=".8"/>
+      <!-- Ear right -->
+      <path d="M202 202 C210 200 213 208 210 216 C207 222 202 222 200 218" stroke-width="1.2" opacity=".8"/>
+      <!-- Eyebrows -->
+      <path d="M133 180 C138 175 150 174 156 176" stroke-width="1.6" opacity="1"/>
+      <path d="M164 176 C170 174 182 175 187 180" stroke-width="1.6" opacity="1"/>
+      <!-- Eyes left -->
+      <ellipse cx="145" cy="191" rx="9.5" ry="6" stroke-width="1.3" opacity=".95"/>
+      <circle cx="145" cy="191" r="3.5" fill="white" opacity=".95"/>
+      <circle cx="146" cy="190" r="1.5" fill="#080808"/>
+      <!-- Eyes right -->
+      <ellipse cx="175" cy="191" rx="9.5" ry="6" stroke-width="1.3" opacity=".95"/>
+      <circle cx="175" cy="191" r="3.5" fill="white" opacity=".95"/>
+      <circle cx="176" cy="190" r="1.5" fill="#080808"/>
+      <!-- Nose -->
+      <path d="M156 193 C154 203 152 210 149 214 C154 218 166 218 171 214 C168 210 166 203 164 193" stroke-width="1" opacity=".65"/>
+      <!-- Nostril hint -->
+      <path d="M150 213 C152 215 155 216 157 215" stroke-width=".8" opacity=".5"/>
+      <path d="M170 213 C168 215 165 216 163 215" stroke-width=".8" opacity=".5"/>
+      <!-- Mustache -->
+      <path d="M147 221 C152 218 158 217 160 218 C162 217 168 218 173 221" stroke-width="1.6" opacity=".95"/>
+      <!-- Jaw -->
+      <path d="M134 232 C138 250 148 265 155 270" stroke-width=".9" opacity=".55"/>
+      <path d="M186 232 C182 250 172 265 165 270" stroke-width=".9" opacity=".55"/>
+      <!-- Watch left wrist -->
+      <rect x="100" y="356" width="16" height="9" rx="2" stroke-width="1.1" opacity=".75"/>
+      <line x1="100" y1="360" x2="94" y2="360" stroke-width="1" opacity=".5"/>
+      <line x1="116" y1="360" x2="122" y2="360" stroke-width="1" opacity=".5"/>
+      <!-- Watch face lines -->
+      <line x1="108" y1="357" x2="108" y2="365" stroke-width=".4" opacity=".4"/>
+      <line x1="104" y1="361" x2="112" y2="361" stroke-width=".4" opacity=".4"/>
+      <!-- Technical annotation lines -->
+      <line x1="30" y1="128" x2="118" y2="165" stroke-width=".35" opacity=".15"/>
+      <text x="5" y="126" fill="white" font-size="5.5" font-family="IBM Plex Mono" opacity=".18">MECH ENG</text>
+      <line x1="290" y1="248" x2="202" y2="218" stroke-width=".35" opacity=".15"/>
+      <text x="268" y="246" fill="white" font-size="5.5" font-family="IBM Plex Mono" opacity=".18">DUIET</text>
+      <!-- Red accent dot on portrait (eye-level) -->
+      <circle cx="20" cy="191" r="2" fill="#e63030" opacity=".6"/>
+      <circle cx="300" cy="191" r="2" fill="#e63030" opacity=".6"/>
+    </svg>
+  </div>
+
+  <div class="hero-circle">Scroll ↓</div>
+  <div class="hero-scroll-txt">You can <em>scroll</em> if you want to,<br>you can leave the static behind.</div>
+</section>
+
+<!-- ══ MARQUEE 1 ══ -->
+<div class="mq-strip">
+  <div class="mq-track">
+    <span class="mq-item">AutoCAD 2D &amp; 3D <span class="mq-sep g">⚙</span></span>
+    <span class="mq-item">Engineering Mechanics <span class="mq-sep r">⚙</span></span>
+    <span class="mq-item">Thermal Sciences <span class="mq-sep g">⚙</span></span>
+    <span class="mq-item">Manufacturing Processes <span class="mq-sep r">⚙</span></span>
+    <span class="mq-item">Published Researcher <span class="mq-sep g">⚙</span></span>
+    <span class="mq-item">Sustainable Materials <span class="mq-sep r">⚙</span></span>
+    <span class="mq-item">Technical Drafting <span class="mq-sep g">⚙</span></span>
+    <span class="mq-item">AutoCAD 2D &amp; 3D <span class="mq-sep g">⚙</span></span>
+    <span class="mq-item">Engineering Mechanics <span class="mq-sep r">⚙</span></span>
+    <span class="mq-item">Thermal Sciences <span class="mq-sep g">⚙</span></span>
+    <span class="mq-item">Manufacturing Processes <span class="mq-sep r">⚙</span></span>
+    <span class="mq-item">Published Researcher <span class="mq-sep g">⚙</span></span>
+    <span class="mq-item">Sustainable Materials <span class="mq-sep r">⚙</span></span>
+    <span class="mq-item">Technical Drafting <span class="mq-sep g">⚙</span></span>
+  </div>
+</div>
+
+<!-- ══ FEATURED WORK ══ -->
+<div id="featured">
+  <div class="feat-lbl">Featured Work</div>
+
+  <div class="slide">
+    <img class="slide-img" src="https://images.unsplash.com/photo-1532094349884-543559822d25?w=1400&q=80" alt="">
+    <div class="slide-overlay"></div>
+    <div class="slide-bar"></div>
+    <div class="slide-num">001</div>
+    <div class="slide-cat">Research · Publication · Open Access</div>
+    <a class="view-btn" href="https://lnkd.in/g_2exd2u" target="_blank">View<br>Paper</a>
+    <div class="slide-content">
+      <div class="slide-title"><span class="accent-r">PLASTIC</span><br>WASTE<br>RESEARCH</div>
+      <div class="slide-bottom">
+        <div class="slide-desc">A structured review on mechanical performance and engineering applications of waste plastic–derived materials. Published in Asian Review of Civil Engineering, Vol. 14, 2025.</div>
+        <div class="slide-yr">2025</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <img class="slide-img" src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1400&q=80" alt="">
+    <div class="slide-overlay"></div>
+    <div class="slide-bar" style="background:var(--green)"></div>
+    <div class="slide-num">002</div>
+    <div class="slide-cat">CAD · 2D &amp; 3D Drafting · Certified</div>
+    <div class="view-btn" style="pointer-events:none;border-color:rgba(0,230,118,.4)">In<br>Progress</div>
+    <div class="slide-content">
+      <div class="slide-title">AUTOCAD<br><span class="accent-g">2D &amp; 3D</span></div>
+      <div class="slide-bottom">
+        <div class="slide-desc">Precision engineering drawings and 3D mechanical models — dimensioning, tolerancing, solid modeling, and professional drafting standards. Certified by SourceCAD, Mar 2026.</div>
+        <div class="slide-yr">2026</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <img class="slide-img" src="https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?w=1400&q=80" alt="">
+    <div class="slide-overlay"></div>
+    <div class="slide-bar"></div>
+    <div class="slide-num">003</div>
+    <div class="slide-cat">Coursework · Design Principles · DUIET</div>
+    <div class="view-btn" style="pointer-events:none">Ongoing</div>
+    <div class="slide-content">
+      <div class="slide-title">MECH<br>DESIGN<br><span class="accent-r">PRINCI</span>PLES</div>
+      <div class="slide-bottom">
+        <div class="slide-desc">Applied mechanical engineering through structured design coursework — mechanics, thermodynamics, manufacturing, and material science at DUIET, Dibrugarh University.</div>
+        <div class="slide-yr">2024 →</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MARQUEE 2 reverse ══ -->
+<div class="mq-strip red-strip">
+  <div class="mq-track rev">
+    <span class="mq-item" style="color:rgba(255,255,255,.35)">Material Science <span class="mq-sep r">◆</span></span>
+    <span class="mq-item" style="color:rgba(255,255,255,.35)">Fluid Mechanics <span class="mq-sep g">◆</span></span>
+    <span class="mq-item" style="color:rgba(255,255,255,.35)">Thermodynamics <span class="mq-sep r">◆</span></span>
+    <span class="mq-item" style="color:rgba(255,255,255,.35)">Peer Reviewed <span class="mq-sep g">◆</span></span>
+    <span class="mq-item" style="color:rgba(255,255,255,.35)">DUIET · Dibrugarh <span class="mq-sep r">◆</span></span>
+    <span class="mq-item" style="color:rgba(255,255,255,.35)">Material Science <span class="mq-sep r">◆</span></span>
+    <span class="mq-item" style="color:rgba(255,255,255,.35)">Fluid Mechanics <span class="mq-sep g">◆</span></span>
+    <span class="mq-item" style="color:rgba(255,255,255,.35)">Thermodynamics <span class="mq-sep r">◆</span></span>
+    <span class="mq-item" style="color:rgba(255,255,255,.35)">Peer Reviewed <span class="mq-sep g">◆</span></span>
+    <span class="mq-item" style="color:rgba(255,255,255,.35)">DUIET · Dibrugarh <span class="mq-sep r">◆</span></span>
+  </div>
+</div>
+
+<!-- ══ MECHANICAL SHOWCASE ══ -->
+<section id="mech-section">
+  <!-- Animated BG SVG gears -->
+  <svg class="mech-bg-svg" viewBox="0 0 900 600" fill="none" stroke="white" stroke-width=".5">
+    <g id="bg-g1" style="transform-origin:180px 300px">
+      <path d="M158,160h44l6,30a110,110,0,0,1,24,10l27-15,31,31-15,27A110,110,0,0,1,285,267l30,6v44l-30,6a110,110,0,0,1-10,24l15,27-31,31-27-15a110,110,0,0,1-24,10l-6,30H158l-6-30a110,110,0,0,1-24-10l-27,15-31-31,15-27A110,110,0,0,1,75,317l-30-6V267l30-6a110,110,0,0,1,10-24l-15-27,31-31,27,15a110,110,0,0,1,24-10ZM180,234A56,56,0,1,0,236,290,56,56,0,0,0,180,234Z"/>
+    </g>
+    <g id="bg-g2" style="transform-origin:358,198">
+      <path d="M346,130h24l4,18a66,66,0,0,1,14,5.8l16-9,19,19-9,16a66,66,0,0,1,5.8,14l18,4v24l-18,4a66,66,0,0,1-5.8,14l9,16-19,19-16-9a66,66,0,0,1-14,5.8l-4,18H346l-4-18a66,66,0,0,1-14-5.8l-16,9-19-19,9-16a66,66,0,0,1-5.8-14l-18-4V166l18-4a66,66,0,0,1,5.8-14l-9-16,19-19,16,9a66,66,0,0,1,14-5.8ZM358,164A34,34,0,1,0,392,198,34,34,0,0,0,358,164Z"/>
+    </g>
+    <line x1="236" y1="290" x2="326" y2="198" stroke-width=".8"/>
+  </svg>
+
+  <div class="mech-content r">
+    <div class="mech-tag">Engineering Fundamentals</div>
+    <div class="mech-accent"></div>
+    <h2 class="mech-hl">DRIVEN<br>BY<br><span class="gr">GRIT.</span></h2>
+    <p class="mech-body">Understanding how machines move — from the crankshaft to the thermal cycle — is what drives me. Every gear, every piston stroke, every tolerance matters. Mechanical engineering isn't just theory: it's the language of the physical world.</p>
+  </div>
+
+  <!-- Animated mechanical diagram -->
+  <svg id="mech-diagram" viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="white">
+    <!-- Main gear -->
+    <g id="gm" style="transform-origin:160px 180px">
+      <path d="M144,60h32l5,24a88,88,0,0,1,19,8l21-12,23,23-12,21a88,88,0,0,1,8,19l24,5v32l-24,5a88,88,0,0,1-8,19l12,21-23,23-21-12a88,88,0,0,1-19,8l-5,24H144l-5-24a88,88,0,0,1-19-8l-21,12-23-23,12-21a88,88,0,0,1-8-19l-24-5V92l24-5a88,88,0,0,1,8-19l-12-21,23-23,21,12a88,88,0,0,1,19-8ZM160,124A56,56,0,1,0,216,180,56,56,0,0,0,160,124Z" stroke-width="1.5" stroke="#00e676" opacity=".85"/>
+    </g>
+    <circle cx="160" cy="180" r="22" stroke="#00e676" stroke-width="1" opacity=".5"/>
+    <circle cx="160" cy="180" r="8" fill="rgba(0,230,118,.15)" stroke="#00e676" stroke-width="1.5"/>
+    <line x1="160" y1="158" x2="160" y2="172" stroke="#00e676" stroke-width="1" opacity=".6"/>
+    <line x1="182" y1="180" x2="168" y2="180" stroke="#00e676" stroke-width="1" opacity=".6"/>
+    <line x1="138" y1="180" x2="152" y2="180" stroke="#00e676" stroke-width="1" opacity=".6"/>
+    <line x1="160" y1="188" x2="160" y2="202" stroke="#00e676" stroke-width="1" opacity=".6"/>
+    <!-- Small gear -->
+    <g id="gs" style="transform-origin:295px 130px">
+      <path d="M284,68h22l3,16a60,60,0,0,1,13,5.5l14-8,16,16-8,14a60,60,0,0,1,5.5,13l16,3v22l-16,3a60,60,0,0,1-5.5,13l8,14-16,16-14-8a60,60,0,0,1-13,5.5l-3,16H284l-3-16a60,60,0,0,1-13-5.5l-14,8-16-16,8-14A60,60,0,0,1,240,149l-16-3v-22l16-3a60,60,0,0,1,5.5-13l-8-14,16-16,14,8a60,60,0,0,1,13-5.5ZM295,94A36,36,0,1,0,331,130,36,36,0,0,0,295,94Z" stroke-width="1.2" stroke="#e63030" opacity=".8"/>
+    </g>
+    <circle cx="295" cy="130" r="14" stroke="#e63030" stroke-width="1" opacity=".4"/>
+    <!-- Connecting line shaft -->
+    <line x1="216" y1="180" x2="260" y2="130" stroke-width="1" opacity=".35"/>
+    <!-- Piston assembly -->
+    <rect x="362" y="75" width="52" height="210" rx="5" stroke-width="1.2" opacity=".65"/>
+    <rect x="368" y="78" width="40" height="18" rx="3" stroke-width="1" opacity=".5"/>
+    <!-- Piston box (animated) -->
+    <rect x="370" y="92" width="36" height="58" rx="3" stroke-width="1.5" fill="rgba(230,48,48,.06)" id="pb" stroke="#e63030" opacity=".9"/>
+    <!-- Connecting rod -->
+    <line x1="388" y1="150" x2="388" y2="255" stroke-width="2" stroke="#e63030" opacity=".85" id="pra"/>
+    <!-- Crank circle -->
+    <circle cx="388" cy="272" r="22" stroke-width="1.5" stroke="#e63030" opacity=".8"/>
+    <!-- Crank pin -->
+    <circle cx="388" cy="252" r="5" fill="rgba(230,48,48,.35)" stroke="#e63030" stroke-width="1.2" id="cpin"/>
+    <!-- Cylinder head detail -->
+    <rect x="357" y="62" width="62" height="18" rx="3" stroke-width="1" opacity=".55"/>
+    <!-- Spark plug -->
+    <line x1="388" y1="50" x2="388" y2="66" stroke-width="2" opacity=".6"/>
+    <circle cx="388" cy="46" r="7" stroke-width="1.5" opacity=".7"/>
+    <!-- Spark! -->
+    <path d="M384 48 L386 44 L388 48 L390 44 L392 48" stroke="#e63030" stroke-width="1" id="spark" opacity="0"/>
+    <!-- Dimension callouts -->
+    <line x1="42" y1="310" x2="108" y2="250" stroke-width=".4" opacity=".25"/>
+    <text x="8" y="315" fill="white" font-size="7" font-family="IBM Plex Mono" opacity=".25">φ 112mm</text>
+    <line x1="440" y1="355" x2="388" y2="300" stroke-width=".4" opacity=".25"/>
+    <text x="442" y="360" fill="white" font-size="7" font-family="IBM Plex Mono" opacity=".25">stroke 95mm</text>
+    <text x="55" y="390" fill="white" font-size="6" font-family="IBM Plex Mono" opacity=".18">ABHINAB BORAH — MECH ENG — DUIET</text>
+  </svg>
+</section>
+
+<!-- ══ ABOUT ══ -->
+<section id="about">
+  <svg id="about-piston" width="280" height="480" viewBox="0 0 280 480" fill="none" stroke="white" stroke-width=".5">
+    <rect x="100" y="40" width="90" height="290" rx="7" opacity=".7"/>
+    <rect x="112" y="55" width="66" height="110" rx="4" id="ap" fill="rgba(255,255,255,.03)"/>
+    <line x1="145" y1="165" x2="145" y2="365" id="apr" stroke-width="1"/>
+    <circle cx="145" cy="385" r="33" stroke-width="1"/>
+    <circle cx="145" cy="365" r="9" fill="rgba(255,255,255,.1)"/>
+    <line x1="100" y1="35" x2="190" y2="35" stroke-width="1.5"/>
+    <rect x="95" y="20" width="100" height="20" rx="3" stroke-width="1"/>
+  </svg>
+
+  <div class="about-tag r">About Abhinab</div>
+  <h2 class="about-hl r">ENGINEER<br>BY <span class="rd">MIND.</span></h2>
+  <div class="about-grid">
+    <div class="about-body r">
+      <p>I'm a first-year Mechanical Engineering undergraduate at DUIET, Dibrugarh University, with a strong interest in core mechanical engineering and its real-world applications.</p>
+      <p>Currently building a solid foundation in engineering mechanics, manufacturing processes, and thermal sciences — while actively developing practical skills in CAD and technical problem-solving.</p>
+      <p>I enjoy understanding how mechanical systems are designed, manufactured, and optimized. My long-term goal is to grow into a competent mechanical engineer capable of contributing to large-scale industrial projects that matter.</p>
+      <p style="margin-top:2rem;font-family:var(--mono);font-size:.5rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gray)">Dibrugarh, Assam, India &nbsp;·&nbsp; 1st Year, B.Tech ME</p>
+    </div>
+    <div class="pub-card r-scale">
+      <div class="pub-card-tag">Published Research · Nov 2025</div>
+      <div class="pub-card-title">"Mechanical Performance and Engineering Applications of Waste Plastic–Derived Materials: A Structured Review"</div>
+      <div class="pub-card-meta">
+        Asian Review of Civil Engineering<br>Vol. 14, No. 2 · July–December 2025<br>Crossref DOI · Double-Blind Peer Review · Open Access
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SKILLS ══ -->
+<section id="skills">
+  <div class="skills-head r">
+    <h2 class="skills-hl">WHAT I<br><span class="gn">BRING.</span></h2>
+    <div style="font-family:var(--mono);font-size:.5rem;color:var(--gray);letter-spacing:.2em;text-transform:uppercase">Capabilities</div>
+  </div>
+  <div class="skills-grid">
+    <div class="sk-col r-left">
+      <div class="sk-col-lbl">CAD &amp; Design</div>
+      <ul class="sk-list">
+        <li>AutoCAD 2D</li><li>AutoCAD 3D</li>
+        <li>Technical Drafting</li><li>Drawing Standards</li><li>Tolerancing</li>
+      </ul>
+    </div>
+    <div class="sk-col r">
+      <div class="sk-col-lbl">Engineering Core</div>
+      <ul class="sk-list">
+        <li>Eng. Mechanics</li><li>Thermodynamics</li>
+        <li>Manufacturing</li><li>Material Science</li><li>Fluid Mechanics</li>
+      </ul>
+    </div>
+    <div class="sk-col r-right">
+      <div class="sk-col-lbl">Research &amp; Tools</div>
+      <ul class="sk-list">
+        <li>Literature Review</li><li>Academic Writing</li>
+        <li>Data Synthesis</li><li>Computer Apps (DCA)</li><li>MS Office Suite</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══ EDUCATION ══ -->
+<section id="edu">
+  <h2 class="edu-hl r">CREDENTIALS.</h2>
+  <div class="edu-list">
+    <div class="edu-row r">
+      <div class="edu-n">01</div>
+      <div>
+        <div class="edu-type">Undergraduate Degree · Ongoing</div>
+        <div class="edu-name">B.Tech — Mechanical Engineering</div>
+        <div class="edu-org">Dibrugarh University Institute of Engineering &amp; Technology (DUIET), Dibrugarh University, Assam, India</div>
+      </div>
+      <div class="edu-yr">2024 → Present</div>
+    </div>
+    <div class="edu-row r">
+      <div class="edu-n">02</div>
+      <div>
+        <div class="edu-type">Certification · SourceCAD</div>
+        <div class="edu-name">AutoCAD Essentials for Beginners</div>
+        <div class="edu-org">SourceCAD · Credential ID: 41ED-2437-919E-0F18</div>
+        <div class="cert-badge">✓ AutoCAD 2D &amp; 3D Certified</div>
+      </div>
+      <div class="edu-yr">Mar 2026</div>
+    </div>
+    <div class="edu-row r">
+      <div class="edu-n">03</div>
+      <div>
+        <div class="edu-type">Diploma · SDS Education</div>
+        <div class="edu-name">Diploma in Computer Application</div>
+        <div class="edu-org">SDS Education · Computer Applications, MS Office, Digital Tools</div>
+      </div>
+      <div class="edu-yr">Dec 2025</div>
+    </div>
+    <div class="edu-row r">
+      <div class="edu-n">04</div>
+      <div>
+        <div class="edu-type">Course · Dibrugarh University</div>
+        <div class="edu-name">ME Principles &amp; Design Concepts</div>
+        <div class="edu-org">Dibrugarh University · Associated with DUIET B.Tech programme</div>
+      </div>
+      <div class="edu-yr">Ongoing</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTACT ══ -->
+<section id="contact">
+  <svg id="cg-gear" width="700" height="700" viewBox="0 0 100 100">
+    <path fill="white" d="M43,0h14l2,10a36,36,0,0,1,8,3.3l9-5,10,10-5,9A36,36,0,0,1,84,36l10,2v14l-10,2a36,36,0,0,1-3.3,8l5,9-10,10-9-5A36,36,0,0,1,58,79l-2,10H43l-2-10a36,36,0,0,1-8-3.3l-9,5-10-10,5-9A36,36,0,0,1,16,52L6,50V36l10-2a36,36,0,0,1,3.3-8l-5-9,10-10,9,5A36,36,0,0,1,41,9ZM50,32a18,18,0,1,0,18,18A18,18,0,0,0,50,32Z"/>
+  </svg>
+  <div class="contact-glow"></div>
+  <h2 class="contact-hl r">LET'S<br>WORK<br><span class="rd">TOGETHER.</span></h2>
+  <div class="contact-grid">
+    <div class="contact-info r">
+      <div>Open to internships &amp; industrial exposure</div>
+      <div>Research collaborations</div>
+      <div>Engineering project opportunities</div>
+      <div>Mentorship &amp; learning partnerships</div>
+      <div style="margin-top:1.5rem">
+        <div>Dibrugarh, Assam, India</div>
+        <div>DUIET — Mechanical Engineering, 1st Year</div>
+        <div><a href="https://www.linkedin.com/in/abhinab-borah-017bb937a/" target="_blank">linkedin.com/in/abhinab-borah ↗</a></div>
+      </div>
+    </div>
+    <div class="contact-btns r">
+      <a href="https://www.linkedin.com/in/abhinab-borah-017bb937a/" target="_blank" class="c-btn"><span>LinkedIn ↗</span></a>
+      <a href="https://lnkd.in/g_2exd2u" target="_blank" class="c-btn"><span>Research Paper ↗</span></a>
+      <a href="mailto:your@email.com" class="c-btn g-btn"><span>Send Email ↗</span></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="ft">© 2025 Abhinab Borah</span>
+  <span class="ft"><span class="ft-green">●</span> Mechanical Engineering · DUIET</span>
+  <a class="ft" href="#hero">↑ Top</a>
+</footer>
+
+<script>
+// ══ CURSOR
+const cursor=document.getElementById('cursor');
+const cdot=document.getElementById('cdot');
+const clbl=document.getElementById('clbl');
+let mx=0,my=0,cx=0,cy=0;
+
+document.addEventListener('mousemove',e=>{
+  mx=e.clientX; my=e.clientY;
+  cdot.style.left=mx+'px'; cdot.style.top=my+'px';
+  clbl.style.left=mx+'px'; clbl.style.top=my+'px';
+  // portrait glow
+  const pw=document.getElementById('portrait-wrap');
+  if(pw){
+    const r=pw.getBoundingClientRect();
+    const dist=Math.sqrt(Math.pow(mx-(r.left+r.width/2),2)+Math.pow(my-(r.top+r.height/2),2));
+    const glow=pw.querySelector('.portrait-glitch');
+    if(glow) glow.style.filter=dist<250?`drop-shadow(0 0 ${Math.max(0,(1-dist/250)*12)}px rgba(230,48,48,.4))`:'none';
+  }
+});
+(function tick(){
+  cx+=(mx-cx)*.12; cy+=(my-cy)*.12;
+  cursor.style.left=cx+'px'; cursor.style.top=cy+'px';
+  requestAnimationFrame(tick);
+})();
+
+// Hover states
+document.querySelectorAll('a,button,.slide,.edu-row,.sk-list li,.pub-card').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{ document.body.classList.add('ch'); clbl.textContent=el.dataset.label||(el.textContent.trim().slice(0,14)); });
+  el.addEventListener('mouseleave',()=>{ document.body.classList.remove('ch'); clbl.textContent=''; });
+});
+document.getElementById('mech-section').addEventListener('mouseenter',()=>document.body.classList.add('cg'));
+document.getElementById('mech-section').addEventListener('mouseleave',()=>document.body.classList.remove('cg'));
+document.getElementById('about').addEventListener('mouseenter',()=>document.body.classList.add('cr'));
+document.getElementById('about').addEventListener('mouseleave',()=>document.body.classList.remove('cr'));
+
+// ══ NAV
+function toggleNav(){
+  document.getElementById('nav-btn').classList.toggle('open');
+  document.getElementById('overlay').classList.toggle('open');
+  document.body.style.overflow=document.getElementById('overlay').classList.contains('open')?'hidden':'';
+}
+function closeNav(){
+  document.getElementById('nav-btn').classList.remove('open');
+  document.getElementById('overlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeNav(); });
+
+// ══ SCROLL HINT HIDE
+window.addEventListener('scroll',()=>{
+  document.getElementById('sh').style.opacity=window.scrollY>100?'0':'1';
+},{passive:true});
+
+// ══ REVEAL
+const io=new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{
+    if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('in'),i*75); io.unobserve(e.target); }
+  });
+},{threshold:.08});
+document.querySelectorAll('.r,.r-left,.r-right,.r-scale').forEach(el=>io.observe(el));
+
+// ══ CANVAS — mechanical gears + pistons
+const canvas=document.getElementById('mech-canvas');
+const ctx=canvas.getContext('2d');
+function resize(){ canvas.width=window.innerWidth; canvas.height=window.innerHeight; }
+resize(); window.addEventListener('resize',resize);
+
+class Gear{
+  constructor(x,y,r,teeth,spd,dir,color){
+    this.x=x;this.y=y;this.r=r;this.teeth=teeth;
+    this.spd=spd;this.dir=dir;this.angle=0;this.color=color||'rgba(255,255,255,.85)';
+  }
+  update(mx,my){
+    const d=Math.sqrt((mx-this.x)**2+(my-this.y)**2);
+    this.angle+=this.spd*this.dir*(d<220?1+(220-d)/220*1.8:1);
+  }
+  draw(){
+    ctx.save();ctx.translate(this.x,this.y);ctx.rotate(this.angle);
+    ctx.strokeStyle=this.color;ctx.lineWidth=.7;
+    const oR=this.r,iR=this.r*.75;
+    ctx.beginPath();
+    for(let i=0;i<this.teeth;i++){
+      const a0=(i/this.teeth)*Math.PI*2,a1=((i+.35)/this.teeth)*Math.PI*2;
+      const a2=((i+.65)/this.teeth)*Math.PI*2,a3=((i+1)/this.teeth)*Math.PI*2;
+      if(i===0)ctx.moveTo(Math.cos(a0)*iR,Math.sin(a0)*iR);
+      ctx.lineTo(Math.cos(a0)*iR,Math.sin(a0)*iR);
+      ctx.lineTo(Math.cos(a1)*oR,Math.sin(a1)*oR);
+      ctx.lineTo(Math.cos(a2)*oR,Math.sin(a2)*oR);
+      ctx.lineTo(Math.cos(a3)*iR,Math.sin(a3)*iR);
+    }
+    ctx.closePath();ctx.stroke();
+    ctx.beginPath();ctx.arc(0,0,this.r*.18,0,Math.PI*2);ctx.stroke();
+    for(let i=0;i<4;i++){
+      const a=(i/4)*Math.PI*2;
+      ctx.beginPath();
+      ctx.moveTo(Math.cos(a)*this.r*.18,Math.sin(a)*this.r*.18);
+      ctx.lineTo(Math.cos(a)*this.r*.62,Math.sin(a)*this.r*.62);ctx.stroke();
+    }
+    ctx.restore();
+  }
+}
+
+class Piston{
+  constructor(x,y,st,spd,color){this.x=x;this.cy=y;this.st=st;this.spd=spd;this.angle=0;this.cr=st*.38;this.color=color||'rgba(255,255,255,.7)'}
+  update(){this.angle+=this.spd}
+  draw(){
+    const crankX=this.x+Math.cos(this.angle)*this.cr;
+    const crankY=this.cy+this.st*.45+Math.sin(this.angle)*this.cr;
+    ctx.strokeStyle=this.color;ctx.lineWidth=.7;
+    ctx.strokeRect(this.x-16,this.cy-8,32,this.st+28);
+    let pistonY;
+    const arm=this.st*.68,dx=crankX-this.x;
+    if(arm*arm-dx*dx>=0) pistonY=crankY-Math.sqrt(arm*arm-dx*dx);
+    else pistonY=crankY-arm;
+    ctx.strokeRect(this.x-12,pistonY-18,24,20);
+    ctx.beginPath();ctx.moveTo(this.x,pistonY);ctx.lineTo(crankX,crankY);ctx.stroke();
+    ctx.beginPath();ctx.arc(this.x,this.cy+this.st*.45,this.cr,0,Math.PI*2);ctx.stroke();
+    ctx.beginPath();ctx.arc(crankX,crankY,3.5,0,Math.PI*2);ctx.fillStyle=this.color;ctx.fill();
+  }
+}
+
+const W=()=>window.innerWidth,H=()=>window.innerHeight;
+const gears=[
+  new Gear(W()*.68,H()*.38,78,16,.007,1,'rgba(0,230,118,.7)'),
+  new Gear(W()*.68+143,H()*.38-56,43,9,.0126,-1,'rgba(230,48,48,.7)'),
+  new Gear(W()*.84,H()*.72,52,11,.009,1,'rgba(255,255,255,.4)'),
+  new Gear(W()*.52,H()*.58,32,7,.015,-1,'rgba(0,230,118,.4)'),
+];
+const pistons=[
+  new Piston(W()*.09,H()*.15,115,.022,'rgba(230,48,48,.6)'),
+  new Piston(W()*.18,H()*.52,88,.028,'rgba(255,255,255,.4)'),
+];
+let camX=0,camY=0;
+document.addEventListener('mousemove',e=>{camX=e.clientX;camY=e.clientY});
+
+function frame(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  gears.forEach(g=>{g.update(camX,camY);g.draw()});
+  pistons.forEach(p=>{p.update();p.draw()});
+  requestAnimationFrame(frame);
+}
+frame();
+
+// ══ ANIMATE SVG MECH DIAGRAM piston
+let pa=0;
+function animPiston(){
+  pa+=.032;
+  const cr=22,baseY=272;
+  const crankPinX=388+Math.sin(pa)*cr;
+  const crankPinY=baseY+Math.cos(pa)*cr;
+  const armLen=100,dx=crankPinX-388;
+  const dy2=armLen*armLen-dx*dx;
+  const pistonY=dy2>=0?crankPinY-Math.sqrt(dy2):crankPinY-armLen;
+  const pb=document.getElementById('pb');
+  const pra=document.getElementById('pra');
+  const cpin=document.getElementById('cpin');
+  const spark=document.getElementById('spark');
+  if(pb){pb.setAttribute('y',pistonY-58);}
+  if(pra){pra.setAttribute('y1',pistonY);pra.setAttribute('y2',crankPinY);}
+  if(cpin){cpin.setAttribute('cx',crankPinX);cpin.setAttribute('cy',crankPinY);}
+  // Spark when piston at top
+  if(spark) spark.setAttribute('opacity',pistonY<110?'1':'0');
+  requestAnimationFrame(animPiston);
+}
+animPiston();
+
+// ══ ANIMATE SVG GEARS (mech diagram)
+let ga=0;
+function animGears(){
+  ga+=.5;
+  const gm=document.getElementById('gm');
+  const gs=document.getElementById('gs');
+  const bg1=document.getElementById('bg-g1');
+  const bg2=document.getElementById('bg-g2');
+  if(gm) gm.setAttribute('transform',`rotate(${ga},160,180)`);
+  if(gs) gs.setAttribute('transform',`rotate(${-ga*1.56},295,130)`);
+  if(bg1) bg1.setAttribute('transform',`rotate(${ga*.28},180,300)`);
+  if(bg2) bg2.setAttribute('transform',`rotate(${-ga*.44},358,198)`);
+  requestAnimationFrame(animGears);
+}
+animGears();
+
+// ══ ABOUT PISTON ANIMATION
+let apa=0;
+function animAboutPiston(){
+  apa+=.025;
+  const ap=document.getElementById('ap');
+  const apr=document.getElementById('apr');
+  if(ap){const y=55+Math.sin(apa)*30;ap.setAttribute('y',y);}
+  if(apr){const y1=55+Math.sin(apa)*30+110;apr.setAttribute('y1',y1);}
+  requestAnimationFrame(animAboutPiston);
+}
+animAboutPiston();
+
+// ══ HEADER SCROLL EFFECT
+window.addEventListener('scroll',()=>{
+  const h=document.getElementById('site-header');
+  if(window.scrollY>50) h.style.borderBottomColor='rgba(230,48,48,.2)';
+  else h.style.borderBottomColor='var(--border)';
+},{passive:true});
+</script>
+</body>
+</html>
